@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01 — BAMBU — Victoria Fornieles</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="page page--project">
+
+  <header class="site-header" aria-label="Encabezado del sitio">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html" aria-label="Volver al inicio">
+        <span class="brand__name">VICTORIA <br>FORNIELES</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="site-main" aria-label="Contenido principal">
+    <article class="project" aria-label="Proyecto">
+
+      <header class="project__header">
+        <h1 class="project__title">01 / <br>BAMBU</h1>
+
+        <nav class="project__nav" aria-label="Navegación">
+          <a class="project__back" href="../index.html">Volver</a>
+        </nav>
+      </header>
+
+      <section class="project-gallery" aria-label="Galería del proyecto">
+        <div class="project-gallery__viewport">
+
+          <!-- Slide 1 (default) -->
+          <figure class="project-gallery__slide" id="s1" aria-label="Imagen 1">
+
+            <div class="project-gallery__frame">
+
+              <span class="project-gallery__arrow-spacer" aria-hidden="true"></span>
+
+              <img src="../assets/img/projects/bambu/PosterX3.jpg" alt="BAMBU — Poster" loading="eager">
+
+              <a class="project-gallery__arrow project-gallery__arrow--next" href="#s2" aria-label="Siguiente">
+                ›
+              </a>
+
+            </div>
+          </figure>
+
+          <!-- Slide 2 -->
+          <figure class="project-gallery__slide" id="s2" aria-label="Imagen 2">
+
+            <div class="project-gallery__frame">
+
+              <a class="project-gallery__arrow project-gallery__arrow--prev" href="#s1" aria-label="Anterior">‹</a>
+
+              <img src="../assets/img/projects/bambu/01-raw-tote-bag-mockup.jpg" alt="BAMBU — Aplicación"
+                loading="lazy">
+
+              <a class="project-gallery__arrow project-gallery__arrow--next" href="#s3" aria-label="Siguiente">›</a>
+            </div>
+          </figure>
+
+
+          <!-- Slide 3 -->
+          <figure class="project-gallery__slide" id="s3" aria-label="Imagen 3">
+            <div class="project-gallery__frame">
+              <a class="project-gallery__arrow project-gallery__arrow--prev" href="#s2" aria-label="Anterior">‹</a>
+
+              <img src="../assets/img/projects/bambu/Aplicación.jpg" alt="BAMBU — Mockup" loading="lazy">
+
+              <span class="project-gallery__arrow-spacer" aria-hidden="true"></span>
+            </div>
+          </figure>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+</body>
+
+</html>
