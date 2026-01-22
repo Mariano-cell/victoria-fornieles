@@ -1,7 +1,9 @@
 /* ========== BASE ========== */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -10,7 +12,10 @@ body {
   background: white;
 }
 
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* ========== TOKENS ========== */
 :root {
@@ -25,7 +30,10 @@ img { max-width: 100%; display: block; }
   --card-title-h: 28px;
 
   --font-main: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --hero-offset: clamp(160px, 20vw, 360px);
+
+  /* Si querés algo de “aire” en el fold, que ceda antes de recortar contenido */
+  --fold-pad-bottom: 4rem;
+  --fold-pad-top: clamp(0px, 6svh, 80px);
 }
 
 /* ========== HEADER ========== */
@@ -45,7 +53,10 @@ img { max-width: 100%; display: block; }
   padding-inline: var(--container-pad);
 }
 
-.brand { text-decoration: none; color: inherit; }
+.brand {
+  text-decoration: none;
+  color: inherit;
+}
 
 .brand__name {
   font-size: 26px;
@@ -61,18 +72,37 @@ img { max-width: 100%; display: block; }
   padding-top: 0;
 }
 
-/* ========== HOME GRID ========== */
+/* ========== HOME: FOLD (solo 1 fila visible) ========== */
+.work-fold {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: flex-end;
+
+  /* Espacios controlados que se adaptan al viewport */
+  padding-top: var(--fold-pad-top);
+  padding-bottom: 12px;
+}
+
+/* La grilla del fold no necesita min-height ni padding extra */
+.work-grid--fold {
+  width: 100%;
+}
+
+/* ========== HOME: LISTA (resto) ========== */
+.work-list {
+  padding-top: 0;
+  padding-bottom: 4rem;
+}
+
+/* ========== GRID (base, reutilizable) ========== */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: var(--grid-gap-x);
   row-gap: var(--grid-gap-y);
-
-  min-height: calc(100svh - var(--header-h));
-  padding-top: var(--hero-offset);
-  padding-bottom: 4rem;
 }
 
+/* ========== CARD ========== */
 .work-card {
   min-height: 0;
   display: flex;
@@ -111,7 +141,7 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
 }
 
-/* ========== PROJECT PAGE ========== */
+/* ========== PROJECT PAGE (placeholder; mantené tu bloque completo acá) ========== */
 .page--project .site-main {
   padding-inline: var(--container-pad);
   padding-bottom: 48px;
@@ -124,4 +154,4 @@ img { max-width: 100%; display: block; }
   padding-top: 3rem;
 }
 
-/* ... etc ... */
+/* ... pegá acá el resto de tu CSS de project/gallery tal como lo tenías ... */

@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Victoria Fornieles — Portfolio</title>
 
-    <!-- Tipografía-->
+    <!-- Tipografía -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/tokens.css" />
@@ -36,118 +33,128 @@
     <!-- Main -->
     <main class="site-main" aria-label="Contenido principal">
 
-        <section class="work-grid" aria-label="Trabajos">
+        <!-- FOLD: primera pantalla (solo 1 fila visible) -->
+        <section class="work-fold" aria-label="Trabajos destacados">
+            <div class="work-grid work-grid--fold" aria-label="Primera fila de trabajos">
 
-            <!-- Card 01 -->
-            <article class="work-card">
-                <h2 class="work-card__title">01 / <br> BAMBU</h2>
-                <a class="work-card__link" href="projects/bambu.html" aria-label="Abrir Proyecto 01">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/bambu/PosterX3.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 01 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">01 / <br> BAMBU</h2>
+                    <a class="work-card__link" href="projects/bambu.html" aria-label="Abrir Proyecto 01">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/bambu/PosterX3.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 02 -->
-            <article class="work-card">
-                <h2 class="work-card__title">02 / <br> TOMO</h2>
-                <a class="work-card__link" href="projects/project-02.html" aria-label="Abrir Proyecto 02">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/tomo/Free Eco Bag Carrying by Man Mockup.png" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 02 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">02 / <br> TOMO</h2>
+                    <a class="work-card__link" href="projects/project-02.html" aria-label="Abrir Proyecto 02">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/tomo/Free Eco Bag Carrying by Man Mockup.png" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 03 -->
-            <article class="work-card">
-                <h2 class="work-card__title">03 / <br> DIAGONAL</h2>
-                <a class="work-card__link" href="projects/project-03.html" aria-label="Abrir Proyecto 03">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/diagonal/Free Craft Paper Bag Mockup.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 03 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">03 / <br> DIAGONAL</h2>
+                    <a class="work-card__link" href="projects/project-03.html" aria-label="Abrir Proyecto 03">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/diagonal/Free Craft Paper Bag Mockup.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 04 -->
-            <article class="work-card">
-                <h2 class="work-card__title">04 / <br> CORA</h2>
-                <a class="work-card__link" href="projects/project-04.html" aria-label="Abrir Proyecto 04">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/cora/DSC07292.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+            </div>
+        </section>
 
-            <!-- Card 05 -->
-            <article class="work-card">
-                <h2 class="work-card__title">05 / <br> FOTOS</h2>
-                <a class="work-card__link" href="projects/project-05.html" aria-label="Abrir Proyecto 05">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/fotos/vickyfornieles7.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+        <!-- LISTA: resto del portfolio -->
+        <section class="work-list" aria-label="Todos los trabajos">
+            <div class="work-grid" aria-label="Listado de trabajos">
 
-            <!-- Card 06 -->
-            <article class="work-card">
-                <h2 class="work-card__title">06 / <br> ANALÓGICAS</h2>
-                <a class="work-card__link" href="projects/project-06.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/analogicas/fotos viaje -06.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 04 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">04 / <br> CORA</h2>
+                    <a class="work-card__link" href="projects/project-04.html" aria-label="Abrir Proyecto 04">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/cora/DSC07292.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 07 -->
-            <article class="work-card">
-                <h2 class="work-card__title">07 / <br> VISUALES</h2>
-                <a class="work-card__link" href="projects/project-07.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/visuales/Tapa - Buenos Aires .jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 05 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">05 / <br> FOTOS</h2>
+                    <a class="work-card__link" href="projects/project-05.html" aria-label="Abrir Proyecto 05">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/fotos/vickyfornieles7.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 08 -->
-            <article class="work-card">
-                <h2 class="work-card__title">08 / <br> ARTES DE TAPA</h2>
-                <a class="work-card__link" href="projects/project-08.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/artes-de-tapa/40años_Paraiso_Tapa.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 06 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">06 / <br> ANALÓGICAS</h2>
+                    <a class="work-card__link" href="projects/project-06.html" aria-label="Abrir Proyecto 06">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/analogicas/fotos viaje -06.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 09 -->
-            <article class="work-card">
-                <h2 class="work-card__title">09 / <br> ESCANEOS</h2>
-                <a class="work-card__link" href="projects/project-09.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/escaneos/IMAG0273.JPG" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 07 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">07 / <br> VISUALES</h2>
+                    <a class="work-card__link" href="projects/project-07.html" aria-label="Abrir Proyecto 07">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/visuales/Tapa - Buenos Aires .jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 10 -->
-            <article class="work-card">
-                <h2 class="work-card__title">10 / <br> VERMUTEO</h2>
-                <a class="work-card__link" href="projects/project-10.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/vermuteo/Bambu_ManualdeMarca_Vol3-25.jpg" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 08 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">08 / <br> ARTES DE TAPA</h2>
+                    <a class="work-card__link" href="projects/project-08.html" aria-label="Abrir Proyecto 08">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/artes-de-tapa/40años_Paraiso_Tapa.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
 
-            <!-- Card 11 -->
-            <article class="work-card">
-                <h2 class="work-card__title">11 / <br> LINEA 22</h2>
-                <a class="work-card__link" href="projects/project-11.html" aria-label="Abrir Proyecto 06">
-                    <div class="work-card__media" aria-hidden="true">
-                        <img src="assets/img/projects/linea-22/portada-linea-22.png" alt="">
-                    </div>
-                </a>
-            </article>
+                <!-- Card 09 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">09 / <br> ESCANEOS</h2>
+                    <a class="work-card__link" href="projects/project-09.html" aria-label="Abrir Proyecto 09">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/escaneos/IMAG0273.JPG" alt="">
+                        </div>
+                    </a>
+                </article>
 
+                <!-- Card 10 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">10 / <br> VERMUTEO</h2>
+                    <a class="work-card__link" href="projects/project-10.html" aria-label="Abrir Proyecto 10">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/vermuteo/Bambu_ManualdeMarca_Vol3-25.jpg" alt="">
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Card 11 -->
+                <article class="work-card">
+                    <h2 class="work-card__title">11 / <br> LINEA 22</h2>
+                    <a class="work-card__link" href="projects/project-11.html" aria-label="Abrir Proyecto 11">
+                        <div class="work-card__media" aria-hidden="true">
+                            <img src="assets/img/projects/linea-22/portada-linea-22.png" alt="">
+                        </div>
+                    </a>
+                </article>
+
+            </div>
         </section>
 
     </main>
