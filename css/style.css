@@ -17,24 +17,13 @@ img {
   display: block;
 }
 
-/* ========== TOKENS ========== */
-:root {
-  --container-pad: 16px;
-  --header-h: 84px;
 
-  --grid-gap-x: 12px;
-  --grid-gap-y: 24px;
 
-  --title-size: 16px;
-  --title-leading: 1.2;
-  --card-title-h: 28px;
 
-  --font-main: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* Si querés algo de “aire” en el fold, que ceda antes de recortar contenido */
-  --fold-pad-bottom: 4rem;
-  --fold-pad-top: clamp(0px, 6svh, 80px);
-}
+
+
+
 
 /* ========== HEADER ========== */
 .site-header {
@@ -60,7 +49,7 @@ img {
 
 .brand__name {
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
 }
@@ -71,6 +60,67 @@ img {
   padding-bottom: var(--container-pad);
   padding-top: 0;
 }
+
+
+
+
+
+
+
+
+
+
+/* ========== SCROLL SNAP (DESKTOP/MOBILE) ========== */
+html {
+  scroll-snap-type: y mandatory;
+}
+
+/* La primera pantalla (fold) y cada fila-snap */
+.work-fold,
+.work-step {
+  scroll-snap-align: end;
+  scroll-snap-stop: always;
+}
+
+
+/* Cada “step” es una pantalla: fila apoyada abajo */
+.work-step {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: flex-end;
+  padding-top: var(--fold-pad-top);
+  padding-bottom: var(--fold-pad-bottom);
+}
+
+/* La grilla de una sola fila dentro del step */
+.work-step__row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--work-cols), 1fr);
+  column-gap: var(--grid-gap-x);
+  row-gap: var(--grid-gap-y);
+}
+
+/* El contenedor original solo sirve de “fuente” para el JS */
+.work-list__items {
+  display: contents;
+  /* no afecta el layout; el JS lo vacía igual */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ========== HOME: FOLD (solo 1 fila visible) ========== */
 .work-fold {
@@ -90,14 +140,14 @@ img {
 
 /* ========== HOME: LISTA (resto) ========== */
 .work-list {
-  padding-top: 0;
+  padding-top: 12px;
   padding-bottom: 4rem;
 }
 
 /* ========== GRID (base, reutilizable) ========== */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--work-cols), 1fr);
   column-gap: var(--grid-gap-x);
   row-gap: var(--grid-gap-y);
 }
@@ -113,7 +163,7 @@ img {
 .work-card__title {
   margin: 0;
   font-size: var(--title-size);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--title-leading);
   min-height: var(--card-title-h);
 
@@ -153,5 +203,3 @@ img {
   margin-inline: auto;
   padding-top: 3rem;
 }
-
-/* ... pegá acá el resto de tu CSS de project/gallery tal como lo tenías ... */

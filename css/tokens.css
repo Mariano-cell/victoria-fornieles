@@ -1,0 +1,71 @@
+/* ========== TOKENS / DESIGN SYSTEM ========== */
+
+
+
+
+/* ========== FONTS: NEUE HAAS GROTESK DISPLAY ========== */
+
+@font-face {
+    font-family: "Neue Haas Grotesk Display";
+    src: url("../assets/fonts/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayThin.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neue Haas Grotesk Display";
+    src: url("../assets/fonts/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayLight.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neue Haas Grotesk Display";
+    src: url("../assets/fonts/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayRoman.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neue Haas Grotesk Display";
+    src: url("../assets/fonts/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+
+
+:root {
+    /* Layout */
+    --container-pad: 16px;
+    --header-h: 84px;
+
+    /* Grid */
+    --grid-gap-x: 12px;
+    --grid-gap-y: 24px;
+
+    /* Type scale */
+    --title-size: 16px;
+    --title-leading: 1.2;
+    --card-title-h: 28px;
+
+    /* Font stacks */
+    --font-main: "Neue Haas Grotesk Display", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* Home fold spacing */
+    --fold-pad-bottom: 12px;
+    --fold-pad-top: clamp(0px, 6svh, 80px);
+
+    --work-cols: 3; 
+}
+
+@media (max-width: 768px) {
+  :root { --work-cols: 2; }
+}
