@@ -35,7 +35,7 @@
   
   :root {
     /* Layout */
-    --container-pad: 16px;
+    --container-pad: 20px;
     --header-h: 84px;
   
     /* Grid */
@@ -51,7 +51,7 @@
     --font-main: "Neue Haas Grotesk Display", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   
     /* Step spacing */
-    --step-pad-bottom: 12px;
+    --step-pad-bottom: 24px;
     --step-pad-top: 12px;
   
     /* Grid columns (responsive) */
