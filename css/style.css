@@ -10,6 +10,7 @@ body {
   font-family: var(--font-main);
   font-weight: 400;
   background: white;
+  overflow-x: hidden;
 }
 
 img {
@@ -17,21 +18,12 @@ img {
   display: block;
 }
 
-
-
-
-
-
-
-
-
 /* ========== HEADER ========== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
   background: white;
-
   height: var(--header-h);
   display: flex;
   align-items: center;
@@ -61,38 +53,34 @@ img {
   padding-top: 0;
 }
 
-
-
-
-
-
-
-
-
-
-/* ========== SCROLL SNAP (DESKTOP/MOBILE) ========== */
+/* ========== SCROLL SNAP ========== */
 html {
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
-/* La primera pantalla (fold) y cada fila-snap */
-.work-fold,
+/* ========== PORTFOLIO SECTION ========== */
+.work-portfolio {
+  /* Este contenedor será envuelto por "steps" dinámicamente */
+}
+
+/* Cada "step" = una fila con scroll snap */
 .work-step {
+  display: flex;
+  align-items: flex-end;
+  padding-top: var(--step-pad-top);
+  padding-bottom: var(--step-pad-bottom);
   scroll-snap-align: end;
   scroll-snap-stop: always;
 }
 
-
-/* Cada “step” es una pantalla: fila apoyada abajo */
-.work-step {
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  align-items: flex-end;
-  padding-top: var(--fold-pad-top);
-  padding-bottom: var(--fold-pad-bottom);
+/* Solo el primer step tiene padding-top dinámico */
+.work-step:first-child {
+  padding-top: 0;
+  /* Será ajustado por JS */
 }
 
-/* La grilla de una sola fila dentro del step */
+/* La fila dentro de cada step */
 .work-step__row {
   width: 100%;
   display: grid;
@@ -101,55 +89,9 @@ html {
   row-gap: var(--grid-gap-y);
 }
 
-/* El contenedor original solo sirve de “fuente” para el JS */
-.work-list__items {
-  display: contents;
-  /* no afecta el layout; el JS lo vacía igual */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ========== HOME: FOLD (solo 1 fila visible) ========== */
-.work-fold {
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  align-items: flex-end;
-
-  /* Espacios controlados que se adaptan al viewport */
-  padding-top: var(--fold-pad-top);
-  padding-bottom: 12px;
-}
-
-/* La grilla del fold no necesita min-height ni padding extra */
-.work-grid--fold {
-  width: 100%;
-}
-
-/* ========== HOME: LISTA (resto) ========== */
-.work-list {
-  padding-top: 12px;
-  padding-bottom: 4rem;
-}
-
-/* ========== GRID (base, reutilizable) ========== */
+/* Grid original (oculto, usado como fuente por JS) */
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(var(--work-cols), 1fr);
-  column-gap: var(--grid-gap-x);
-  row-gap: var(--grid-gap-y);
+  display: none;
 }
 
 /* ========== CARD ========== */
@@ -166,7 +108,6 @@ html {
   font-weight: 400;
   line-height: var(--title-leading);
   min-height: var(--card-title-h);
-
   display: flex;
   align-items: flex-end;
 }
@@ -183,6 +124,7 @@ html {
   aspect-ratio: 3/2;
   width: 100%;
   overflow: hidden;
+  background: #f5f5f5;
 }
 
 .work-card__media img {
@@ -191,7 +133,7 @@ html {
   object-fit: cover;
 }
 
-/* ========== PROJECT PAGE (placeholder; mantené tu bloque completo acá) ========== */
+/* ========== PROJECT PAGE ========== */
 .page--project .site-main {
   padding-inline: var(--container-pad);
   padding-bottom: 48px;

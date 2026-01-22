@@ -35,9 +35,9 @@
     <!-- Main -->
     <main class="site-main" aria-label="Contenido principal">
 
-        <!-- FOLD: primera pantalla (solo 1 fila visible) -->
-        <section class="work-fold" aria-label="Trabajos destacados">
-            <div class="work-grid work-grid--fold" aria-label="Primera fila de trabajos">
+        <!-- Portfolio completo: UN SOLO GRID -->
+        <section class="work-portfolio" aria-label="Portfolio de trabajos">
+            <div class="work-grid" id="work-grid">
 
                 <!-- Card 01 -->
                 <article class="work-card">
@@ -69,12 +69,6 @@
                     </a>
                 </article>
 
-            </div>
-        </section>
-
-        <!-- LISTA: resto del portfolio -->
-        <section class="work-list" aria-label="Todos los trabajos">
-            <div class="work-list__items" id="work-list-items">
                 <!-- Card 04 -->
                 <article class="work-card">
                     <h2 class="work-card__title">04 / <br> CORA</h2>
@@ -154,13 +148,13 @@
                         </div>
                     </a>
                 </article>
+
             </div>
         </section>
 
-
     </main>
 
-    <script src="js/snap-rows.js"></script>
+    <script src="js/portfolio-snap.js"></script>
 
 </body>
 
