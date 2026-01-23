@@ -43,8 +43,8 @@
     --grid-gap-y: 24px;
   
     /* Type scale */
-    --title-size: 16px;
-    --title-leading: 1.2;
+    --title-size: 15px;
+    --title-leading: 100%;
     --card-title-h: 28px;
   
     /* Font stacks */

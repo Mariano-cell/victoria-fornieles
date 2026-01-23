@@ -64,6 +64,71 @@ html {
   /* Este contenedor será envuelto por "steps" dinámicamente */
 }
 
+/* ========== FADE UNDER HEADER ========== */
+
+.work-portfolio__fade {
+
+  --fade-h: 150px;
+
+  /* Safari/WebKit */
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0,
+      transparent var(--header-h),
+      black calc(var(--header-h) + var(--fade-h)),
+      black 100%);
+
+  /* Standard */
+  mask-image: linear-gradient(to bottom,
+      transparent 0,
+      transparent var(--header-h),
+      black calc(var(--header-h) + var(--fade-h)),
+      black 100%);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+
+/* ====== FADE UNDER HEADER (overlay) ====== */
+:root {
+  --fade-h: 8px;
+  /* ajustá 18–40px según gusto */
+}
+
+.site-main {
+  position: relative;
+}
+
+/* Capa que genera el fade en la zona del header */
+.site-main::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: calc(var(--header-h) + var(--fade-h));
+  pointer-events: none;
+
+  /* Debajo del header (z=10), arriba del contenido */
+  z-index: 9;
+
+  /* Fondo blanco + degradé a transparente */
+  background: linear-gradient(to bottom,
+      #fff 0,
+      #fff var(--header-h),
+      rgba(255, 255, 255, 0) calc(var(--header-h) + var(--fade-h)));
+}
+
+
+
+
+
+
 /* Cada "step" = una fila con scroll snap */
 .work-step {
   display: flex;
@@ -110,6 +175,8 @@ html {
   min-height: var(--card-title-h);
   display: flex;
   align-items: flex-end;
+  font-style: normal;
+  letter-spacing: 0%;
 }
 
 .work-card__link {
@@ -132,18 +199,6 @@ html {
   height: 100%;
   object-fit: cover;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ========== PROJECT VIEWER (BAMBÚ y resto) ========== */
 
@@ -172,10 +227,7 @@ html {
   width: 100%;
 }
 
-
 /* Bloques flechas */
-
-
 .project-nav--prev {
   justify-self: start;
 }
@@ -183,7 +235,6 @@ html {
 .project-nav--next {
   justify-self: end;
 }
-
 
 .project-nav {
   width: var(--nav-w);
@@ -211,6 +262,12 @@ html {
   font-family: inherit;
 }
 
+.project-nav__icon img {
+  width: 18px;
+  height: auto;
+  display: block;
+}
+
 /* Bloque 2: columna central fija (no se achica por la imagen) */
 .project-stage {
   grid-column: 2;
@@ -227,7 +284,6 @@ html {
   gap: 14px;
 }
 
-
 .project-title {
   margin: 0;
   font-size: 15px;
@@ -243,11 +299,9 @@ html {
   gap: 10px;
 }
 
-
 .project-media {
   max-height: calc(100vh - var(--header-h) - 160px);
 }
-
 
 .project-img {
   width: auto;
@@ -259,7 +313,6 @@ html {
   display: block;
 }
 
-
 .project-caption {
   font-size: 14px;
   line-height: 1.25;
@@ -267,7 +320,7 @@ html {
   color: black;
 }
 
-.project-category{
+.project-category {
   font-size: 15px;
   font-weight: 400;
   line-height: 100%;
