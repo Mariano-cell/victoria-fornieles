@@ -93,12 +93,6 @@ html {
 
 
 
-/* ====== FADE UNDER HEADER (overlay) ====== */
-:root {
-  --fade-h: 8px;
-  /* ajustá 18–40px según gusto */
-}
-
 .site-main {
   position: relative;
 }

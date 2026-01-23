@@ -1,7 +1,8 @@
 /**
  * Portfolio Snap System
  * Transforma un grid único en "steps" con scroll snap
- * Cada step muestra una fila pegada al borde inferior del viewport
+ * Desktop: 1 fila por step
+ * Mobile: 2 filas por step
  */
 
 (() => {
@@ -10,16 +11,27 @@
 
     if (!gridContainer || !portfolioSection) return;
 
-    let lastCols = null;
+    let lastSignature = null;
     let firstStepElement = null;
 
-    // Obtener número de columnas desde CSS
-    const getCols = () => {
+    const readCSSInt = (varName, fallback) => {
         const raw = getComputedStyle(document.documentElement)
-            .getPropertyValue('--work-cols')
+            .getPropertyValue(varName)
             .trim();
         const n = parseInt(raw, 10);
-        return Number.isFinite(n) && n > 0 ? n : 3;
+        return Number.isFinite(n) && n > 0 ? n : fallback;
+    };
+
+    // Obtener número de columnas desde CSS
+    const getCols = () => readCSSInt('--work-cols', 3);
+
+    // Obtener filas por step desde CSS (desktop=1, mobile=2)
+    const getRowsPerStep = () => {
+        const raw = getComputedStyle(document.documentElement)
+            .getPropertyValue('--work-rows-per-step')
+            .trim();
+        const n = parseInt(raw, 10);
+        return Number.isFinite(n) && n > 0 ? n : 1;
     };
 
     // Calcular padding-top dinámico SOLO para el primer step
@@ -29,17 +41,8 @@
         const row = firstStepElement.querySelector('.work-step__row');
         if (!row) return;
 
-        const headerHeight = parseInt(
-            getComputedStyle(document.documentElement)
-                .getPropertyValue('--header-h')
-                .trim()
-        ) || 84;
-
-        const paddingBottom = parseInt(
-            getComputedStyle(document.documentElement)
-                .getPropertyValue('--step-pad-bottom')
-                .trim()
-        ) || 12;
+        const headerHeight = readCSSInt('--header-h', 84);
+        const paddingBottom = readCSSInt('--step-pad-bottom', 12);
 
         const availableHeight = window.innerHeight - headerHeight;
         const rowHeight = row.offsetHeight;
@@ -52,47 +55,54 @@
     // Construir los steps a partir del grid
     const buildSteps = () => {
         const cols = getCols();
+        const rowsPerStep = getRowsPerStep();
+        const itemsPerStep = cols * rowsPerStep;
 
-        // Solo reconstruir si cambió el número de columnas
-        if (cols === lastCols && portfolioSection.dataset.built === 'true') {
+        if (!Number.isFinite(itemsPerStep) || itemsPerStep <= 0) return;
+
+        const signature = `${cols}x${rowsPerStep}`;
+        const hasSteps = !!portfolioSection.querySelector('.work-step');
+
+        if (signature === lastSignature && portfolioSection.dataset.built === 'true' && hasSteps) {
+            adjustFirstStepSpacing();
             return;
         }
 
-        lastCols = cols;
+        lastSignature = signature;
 
-        // Tomar todas las cards del grid original
         const cards = Array.from(gridContainer.querySelectorAll('.work-card'));
 
-        // Limpiar steps previos
-        portfolioSection.querySelectorAll('.work-step').forEach(el => el.remove());
+        // Si por algún motivo no hay cards en el grid, no destruyas lo que ya existe
+        if (cards.length === 0 && hasSteps) {
+            adjustFirstStepSpacing();
+            return;
+        }
 
-        // Crear steps: cada uno con una fila
-        for (let i = 0; i < cards.length; i += cols) {
+        portfolioSection.querySelectorAll('.work-step').forEach(el => el.remove());
+        firstStepElement = null;
+
+        for (let i = 0; i < cards.length; i += itemsPerStep) {
             const step = document.createElement('div');
             step.className = 'work-step';
 
             const row = document.createElement('div');
             row.className = 'work-step__row';
 
-            // Añadir las cards de esta fila
-            cards.slice(i, i + cols).forEach(card => row.appendChild(card));
+            cards.slice(i, i + itemsPerStep).forEach(card => row.appendChild(card));
 
             step.appendChild(row);
             portfolioSection.appendChild(step);
 
-            // Guardar referencia al primer step
-            if (i === 0) {
-                firstStepElement = step;
-            }
+            if (i === 0) firstStepElement = step;
         }
 
         portfolioSection.dataset.built = 'true';
 
-        // Ajustar spacing del primer step después de construir
         requestAnimationFrame(() => {
             adjustFirstStepSpacing();
         });
     };
+
 
     // Ejecutar al cargar
     if (document.readyState === 'loading') {
