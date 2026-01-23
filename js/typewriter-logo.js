@@ -42,7 +42,7 @@
     // --- Timing ---
     const baseDelay = 60;        // velocidad por letra
     const lineBreakDelay = 200;  // pausa extra en <br>
-    const afterLoadDelay = 1200; // delay deseado después de load
+    const afterLoadDelay = 5200; // delay deseado después de load
 
     let i = 0;
 
