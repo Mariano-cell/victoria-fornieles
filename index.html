@@ -27,7 +27,11 @@
     <header class="site-header" aria-label="Encabezado del sitio">
         <div class="site-header__inner">
             <a class="brand" href="index.html" aria-label="Ir al inicio">
-                <span class="brand__name">VICTORIA <br>FORNIELES</span>
+                <span class="brand__name" data-typewriter="logo" aria-label="Victoria Fornieles">
+                    <span class="brand__ghost" aria-hidden="true">VICTORIA <br>FORNIELES</span>
+                    <span class="brand__live">VICTORIA <br>FORNIELES</span>
+                </span>
+
             </a>
         </div>
     </header>
@@ -159,7 +163,12 @@
 
     </main>
 
-    <script src="js/portfolio-snap.js"></script>
+    <script src="js/portfolio-snap.js" defer></script>
+    <script src="js/typewriter-logo.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+
+
 
 </body>
 

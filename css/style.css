@@ -46,6 +46,63 @@ img {
   letter-spacing: 0.02em;
 }
 
+/* ========== TYPEWRITER LOGO ========== */
+
+.brand__name {
+  display: inline-block;
+  white-space: pre-line;
+  /* mantiene tu <br> */
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .brand__name.is-typing::after {
+    animation: none;
+  }
+}
+
+.brand__name {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* reserva espacio pero no se ve */
+.brand__ghost {
+  visibility: hidden;
+}
+
+/* capa visible arriba del ghost */
+.brand__live {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========== MAIN ========== */
 .site-main {
   padding-inline: var(--container-pad);
@@ -193,6 +250,75 @@ html {
   height: 100%;
   object-fit: cover;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* BLOQUE DE ANIMACION */
+
+/* ========== Intro animation: primera fila ========== */
+
+/* Estado inicial */
+.work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+  opacity: 0;
+  transform: translateY(-300px);
+}
+
+/* Disparo */
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+  animation: workCardIn 3000ms ease forwards;
+}
+
+/* Stagger */
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(1) {
+  animation-delay: 400ms;
+}
+
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
+  animation-delay: 0ms;
+}
+
+@keyframes workCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ========== PROJECT VIEWER (BAMBÚ y resto) ========== */
 
