@@ -40,9 +40,9 @@
     walk(temp);
 
     // --- Timing ---
-    const baseDelay = 75;        // velocidad por letra
-    const lineBreakDelay = 0;  // pausa extra en <br>
-    const afterLoadDelay = 2500; // delay deseado después de load
+    const baseDelay = 60;        // velocidad por letra
+    const lineBreakDelay = 200;  // pausa extra en <br>
+    const afterLoadDelay = 1200; // delay deseado después de load
 
     let i = 0;
 
