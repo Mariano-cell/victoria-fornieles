@@ -446,3 +446,92 @@ body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
   line-height: 100%;
   letter-spacing: 0;
 }
+
+
+/* ========== HEADER CONTACT TOGGLE ========== */
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Bloque derecho (icono + panel) */
+.site-header__contact {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Botón flecha */
+.contact-toggle {
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  cursor: pointer;
+  color: inherit;
+  line-height: 0;
+}
+
+.contact-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-toggle__icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  transition: transform 200ms ease;
+}
+
+/* Rotación cuando está abierto */
+.site-header__contact.is-open .contact-toggle__icon img {
+  transform: rotate(180deg);
+}
+
+/* Panel desplegable */
+.header-email {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+
+  /* look minimal */
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+
+  /* animación */
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+/* Estado abierto */
+.site-header__contact.is-open .header-email {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.header-email__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-email__link:hover {
+  text-decoration: underline;
+}
+
+/* Accesibilidad */
+.contact-toggle:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.6);
+  outline-offset: 2px;
+}
