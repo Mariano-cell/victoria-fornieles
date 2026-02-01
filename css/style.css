@@ -596,3 +596,101 @@ body.is-ready .contact-toggle {
 .header-email__copy:hover img {
   opacity: 1;
 }
+
+
+
+@media (max-width: 768px) {
+
+  /* el main ocupa el viewport menos el header */
+  .page--project .site-main {
+    min-height: calc(100vh - var(--header-h));
+    display: flex;
+    align-items: center;
+    /* centra verticalmente */
+  }
+
+  /* aseguramos que el proyecto no se pegue arriba */
+  .page--project .project {
+    padding-top: 0;
+    margin-block: auto;
+  }
+
+
+  /* el viewer ya no necesita 3 columnas */
+  .project-viewer {
+    position: relative;
+    display: block;
+  }
+
+  /* referencia para ubicar overlays */
+  .project-stage {
+    position: relative;
+  }
+
+  /* el área donde vive la imagen (si querés, ajustá) */
+  .project-media {
+    position: relative;
+  }
+
+  /* botones como overlays invisibles */
+  .project-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+
+    /* superficie amplia */
+    padding: 0;
+    margin: 0;
+
+    /* invisibles */
+    background: transparent;
+    border: 0;
+
+    opacity: 0;
+    /* IMPORTANTE: aunque opacity 0, sigue siendo clickeable */
+    cursor: pointer;
+
+    /* centrar por si algún día querés mostrar icono */
+    display: block;
+  }
+
+  /* los overlays se posicionan sobre el área de imagen */
+  .project-nav--prev {
+    left: 0;
+  }
+
+  .project-nav--next {
+    right: 0;
+  }
+
+  /* clave: que el overlay esté encima de la imagen */
+  .project-nav {
+    z-index: 5;
+  }
+
+  /* y que la imagen quede debajo */
+  .project-media {
+    z-index: 1;
+  }
+
+  /* accesibilidad: si alguien navega con teclado, que se vea */
+  .project-nav:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, .55);
+    outline-offset: -2px;
+    opacity: 1;
+    /* sólo al focus */
+  }
+
+  /* opcional: feedback sutil al tocar (no visible permanente) */
+  .project-nav:active {
+    opacity: 0.06;
+    /* micro “flash” */
+    background: #000;
+  }
+
+  /* si tus iconos molestan en mobile, ocultalos */
+  .project-nav__icon {
+    display: none;
+  }
+}
