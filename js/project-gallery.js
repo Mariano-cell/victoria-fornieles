@@ -197,14 +197,13 @@
             { src: "../assets/img/projects/escaneos/20.JPG", category: "", caption: "", alt: "" }
         ],
 
-        fotos: [
+        "digitales-alteradas": [
             { src: "../assets/img/projects/fotos/01.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
             { src: "../assets/img/projects/fotos/02.png", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
             { src: "../assets/img/projects/fotos/03.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
             { src: "../assets/img/projects/fotos/04.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
             { src: "../assets/img/projects/fotos/05.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
-            { src: "../assets/img/projects/fotos/06.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
-            { src: "../assets/img/projects/fotos/07.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" }
+            { src: "../assets/img/projects/fotos/06.jpg", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" }
         ],
     };
 
