@@ -16,13 +16,11 @@ window.addEventListener("load", () => {
   const open = () => {
     wrap.classList.add("is-open");
     btn.setAttribute("aria-expanded", "true");
-    panel.hidden = false;
   };
 
   const close = () => {
     wrap.classList.remove("is-open");
     btn.setAttribute("aria-expanded", "false");
-    panel.hidden = true;
   };
 
   const toggle = () => {
@@ -44,5 +42,31 @@ window.addEventListener("load", () => {
   // Escape => cerrar
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
+  });
+})();
+
+// ==============================
+// COPY EMAIL TO CLIPBOARD
+// ==============================
+(() => {
+  const copyBtn = document.querySelector(".header-email__copy");
+  if (!copyBtn) return;
+
+  const text = copyBtn.dataset.copy;
+
+  copyBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+
+    try {
+      await navigator.clipboard.writeText(text);
+      copyBtn.classList.add("is-copied");
+
+      // feedback temporal
+      setTimeout(() => {
+        copyBtn.classList.remove("is-copied");
+      }, 1200);
+    } catch (err) {
+      console.error("No se pudo copiar al portapapeles", err);
+    }
   });
 })();
