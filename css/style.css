@@ -572,19 +572,36 @@ body.is-ready .contact-toggle {
   outline-offset: 2px;
 }
 
+/* =========================
+   HEADER EMAIL — BUTTON RESET
+========================= */
+
 .header-email__copy {
-  /* border: 0;
-  background: transparent;
-  padding: 4px;
-  cursor: pointer; */
-  width: 22px;
-  height: 22px;
-  display: inline-flex;
+  all: unset;
+  /* borra estilos nativos del button */
+  box-sizing: border-box;
+
+  display: flex;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  width: 100%;
+
+  /* hereda tipografía como antes */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 }
+
+.header-email__link {
+  font-size: 20px;
+  /* el que ya usabas */
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 
 .header-email__copy-icon img {
   width: 22px;
@@ -592,6 +609,7 @@ body.is-ready .contact-toggle {
   display: block;
   opacity: 0.7;
 }
+
 
 .header-email__copy:hover img {
   opacity: 1;
