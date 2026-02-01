@@ -228,6 +228,9 @@ html {
   align-items: flex-end;
   font-style: normal;
   letter-spacing: 0%;
+
+  transition:
+    letter-spacing 500ms ease;
 }
 
 .work-card__link {
@@ -236,6 +239,10 @@ html {
   min-height: 0;
   text-decoration: none;
   color: inherit;
+}
+
+.work-card:hover .work-card__title {
+  letter-spacing: 1px;
 }
 
 .work-card__media {
