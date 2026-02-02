@@ -427,17 +427,28 @@ body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
 }
 
 .project-media {
-  max-height: calc(100vh - var(--header-h) - 160px);
+  /* elegí un alto fijo razonable; podés ajustar este número */
+  height: 520px;
+
+  /* opcional: evitás saltos si alguna imagen tarda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* como ya tenías max-height, lo sacamos para que el height mande */
+  max-height: none;
 }
 
 .project-img {
-  width: auto;
-  height: auto;
   max-width: 100%;
-  max-height: calc(100vh - var(--header-h) - 160px);
+  max-height: none;
 
   object-fit: contain;
   display: block;
+
+  height: 100%;
+  width: auto;
+
 }
 
 .project-caption {
@@ -649,6 +660,7 @@ body.is-ready .contact-toggle {
   /* el área donde vive la imagen (si querés, ajustá) */
   .project-media {
     position: relative;
+    height: auto; 
   }
 
   /* botones como overlays invisibles */
@@ -672,6 +684,12 @@ body.is-ready .contact-toggle {
 
     /* centrar por si algún día querés mostrar icono */
     display: block;
+  }
+
+  .project-img {
+    height: auto;
+    width: auto;
+    max-height: calc(100vh - var(--header-h) - 160px); /* tu regla original */
   }
 
   /* los overlays se posicionan sobre el área de imagen */
