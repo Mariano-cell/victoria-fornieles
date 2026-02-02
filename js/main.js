@@ -28,6 +28,9 @@ window.addEventListener("load", () => {
     isOpen ? close() : open();
   };
 
+  // Exponemos close() para que otros módulos lo puedan usar (sin acoplarse a variables)
+  wrap._closeHeaderEmail = close;
+
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     toggle();
@@ -53,6 +56,23 @@ window.addEventListener("load", () => {
   if (!copyBtn) return;
 
   const text = copyBtn.dataset.copy;
+  const wrap = document.querySelector(".site-header__contact");
+  const toast = document.querySelector(".copy-toast");
+
+  let toastTimeout = null;
+
+  const showToast = () => {
+    if (!toast) return;
+
+    toast.classList.add("is-visible");
+    toast.setAttribute("aria-hidden", "false");
+
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toast.setAttribute("aria-hidden", "true");
+    }, 1200);
+  };
 
   copyBtn.addEventListener("click", async (e) => {
     e.stopPropagation();
@@ -61,7 +81,15 @@ window.addEventListener("load", () => {
       await navigator.clipboard.writeText(text);
       copyBtn.classList.add("is-copied");
 
-      // feedback temporal
+      // cerrar toggle
+      if (wrap && typeof wrap._closeHeaderEmail === "function") {
+        wrap._closeHeaderEmail();
+      }
+
+      // mostrar cartel
+      showToast();
+
+      // feedback interno
       setTimeout(() => {
         copyBtn.classList.remove("is-copied");
       }, 1200);
@@ -69,4 +97,19 @@ window.addEventListener("load", () => {
       console.error("No se pudo copiar al portapapeles", err);
     }
   });
+})();
+
+// ==============================
+// ESC => VOLVER AL HOME (solo proyectos)
+// ==============================
+(() => {
+  // Solo correr en páginas de proyecto
+  if (!document.body.classList.contains("page--project")) return;
+
+  document.addEventListener("keyup", (e) => {
+    if (e.key !== "Escape") return;
+
+    window.location.href = "../index.html";
+  });
+
 })();

@@ -552,9 +552,9 @@ body.is-ready .contact-toggle {
 
 /* Estado abierto */
 .site-header__contact.is-open .header-email {
-  opacity: 0.6;
   transform: translateY(0);
   pointer-events: auto;
+  opacity: 1;
 }
 
 .header-email__link {
@@ -592,7 +592,7 @@ body.is-ready .contact-toggle {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  color: inherit;
+  color: black;
 }
 
 .header-email__link {
@@ -600,6 +600,7 @@ body.is-ready .contact-toggle {
   /* el que ya usabas */
   line-height: 1.2;
   white-space: nowrap;
+  color: black;
 }
 
 
@@ -607,7 +608,7 @@ body.is-ready .contact-toggle {
   width: 22px;
   height: 22px;
   display: block;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 
@@ -702,13 +703,63 @@ body.is-ready .contact-toggle {
 
   /* opcional: feedback sutil al tocar (no visible permanente) */
   .project-nav:active {
-    opacity: 0.06;
+    opacity: 0;
     /* micro “flash” */
-    background: #000;
+    background: transparent;
   }
 
   /* si tus iconos molestan en mobile, ocultalos */
   .project-nav__icon {
     display: none;
   }
+}
+
+
+
+
+
+
+/* =========================
+   COPY TOAST
+========================= */
+
+.copy-toast {
+  position: fixed;
+  top: calc(var(--header-h) + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+
+  padding: 8px 14px;
+  background: #000;
+  color: #fff;
+
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+
+  z-index: 999;
+}
+
+.copy-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  border-radius: 10px;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .copy-toast {
+    transition: none;
+  }
+}
+
+.page--project .brand__live {
+  opacity: 1;
 }

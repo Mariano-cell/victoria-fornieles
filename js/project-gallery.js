@@ -26,6 +26,7 @@
         ],
 
         tomo: [
+            { src: "../assets/img/projects/tomo/portada-tomo.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/a4-13.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/free-eco-bag.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/a4-20.png", category: "BRANDING", caption: "", alt: "" },
@@ -35,7 +36,7 @@
             { src: "../assets/img/projects/tomo/frame-45.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/frame-57.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/a4-13.jpg", category: "BRANDING", caption: "", alt: "" },
-            { src: "../assets/img/projects/tomo/a4-14.jpg", category: "BRANDING", caption: "", alt: "" }
+           
         ],
 
         diagonal: [
@@ -56,39 +57,39 @@
         ],
 
         cora: [
-            { src: "../assets/img/projects/cora/agenda-cora.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc00334.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc00412.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc00817.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06627.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06645.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06671.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06680.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06769.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06804.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06811.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06822.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06907.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06923.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06926.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06958.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06963.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06976.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc06993.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07121.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07292.jpg", category: "BRANDING", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07323.jpg", category: "BRANDING", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07659.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07663.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc07842.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc08097.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc08186.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc09152.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/dsc09223.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/ig-cora-2.jpg", category: "BRANDING", alt: "" },
-            { src: "../assets/img/projects/cora/ig-cora.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/img-8069.jpg", category: "FOTOGRAFÍA", alt: "" },
-            { src: "../assets/img/projects/cora/sin-titulo-02.jpg", category: "FOTOGRAFÍA", alt: "" }
+            { src: "../assets/img/projects/cora/agenda-cora.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc00334.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc00412.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc00817.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06627.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06645.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06671.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06680.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06769.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06804.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06811.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06822.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06907.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06923.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06926.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06958.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06963.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06976.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc06993.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07121.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07292.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07323.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07659.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07663.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc07842.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc08097.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc08186.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc09152.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/dsc09223.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/ig-cora-2.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/ig-cora.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/img-8069.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" },
+            { src: "../assets/img/projects/cora/sin-titulo-02.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" }
         ],
 
         // proyecto 05 / FOTOS
@@ -158,19 +159,17 @@
 
         "artes-tapa": [
             // Ahora cada slide puede tener "category"
-            { src: "../assets/img/projects/artes-de-tapa/01.jpg", category: "PARAISO", caption: "", alt: "" },
-            { src: "../assets/img/projects/artes-de-tapa/02.jpg", category: "PARAISO", caption: "", alt: "" },
-            { src: "../assets/img/projects/artes-de-tapa/03.jpg", category: "PARAISO", caption: "", alt: "" },
-            { src: "../assets/img/projects/artes-de-tapa/04.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
-
-            { src: "../assets/img/projects/artes-de-tapa/05.png", category: "PARAISO", caption: "", alt: "" },
-
-            { src: "../assets/img/projects/artes-de-tapa/06.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
-            // FIX: tenías "../assets/img/projects/projects/..."
+            { src: "../assets/img/projects/artes-de-tapa/10.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/07.jpg", category: "DREIMONDS", caption: "", alt: "" },
+            { src: "../assets/img/projects/artes-de-tapa/01.jpg", category: "PARAISO", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/08.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
-            { src: "../assets/img/projects/artes-de-tapa/09.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
-            { src: "../assets/img/projects/artes-de-tapa/10.jpg", category: "MAGNESIO 1864", caption: "", alt: "" }
+            { src: "../assets/img/projects/artes-de-tapa/05.png", category: "PARAISO", caption: "", alt: "" },
+            { src: "../assets/img/projects/artes-de-tapa/02.jpg", category: "PARAISO", caption: "", alt: "" },
+            { src: "../assets/img/projects/artes-de-tapa/04.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
+            { src: "../assets/img/projects/artes-de-tapa/03.jpg", category: "PARAISO", caption: "", alt: "" },
+            { src: "../assets/img/projects/artes-de-tapa/06.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
+
+            { src: "../assets/img/projects/artes-de-tapa/09.jpg", category: "MAGNESIO 1864", caption: "", alt: "" }
         ],
 
         escaneos: [
