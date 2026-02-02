@@ -538,28 +538,27 @@ body.is-ready .contact-toggle {
 /* Panel desplegable */
 .header-email {
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
 
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
 
-  padding: 10px 8px 10px 12px;
+  padding: 10px 12px;
   background: #fff;
 
-  /* look minimal */
   font-size: 20px;
   line-height: 1.2;
   white-space: nowrap;
 
-  /* animación */
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
   transition: opacity 180ms ease, transform 180ms ease;
 }
+
 
 /* Estado abierto */
 .site-header__contact.is-open .header-email {
@@ -615,17 +614,45 @@ body.is-ready .contact-toggle {
 }
 
 
+.header-email__copy:hover img {
+  opacity: 1;
+}
+
+
+.header-email__label {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  opacity: 0.75;
+  text-align: right;
+  width: 100%;
+}
+
+.header-email__copy {
+  all: unset;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  color: #000;
+}
+
+.header-email__value {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
 .header-email__copy-icon img {
-  width: 22px;
-  height: 22px;
+  width: 15x;
+  height: 15px;
   display: block;
   opacity: 1;
 }
 
-
-.header-email__copy:hover img {
-  opacity: 1;
-}
 
 
 
@@ -660,7 +687,7 @@ body.is-ready .contact-toggle {
   /* el área donde vive la imagen (si querés, ajustá) */
   .project-media {
     position: relative;
-    height: auto; 
+    height: auto;
   }
 
   /* botones como overlays invisibles */
@@ -689,7 +716,8 @@ body.is-ready .contact-toggle {
   .project-img {
     height: auto;
     width: auto;
-    max-height: calc(100vh - var(--header-h) - 160px); /* tu regla original */
+    max-height: calc(100vh - var(--header-h) - 160px);
+    /* tu regla original */
   }
 
   /* los overlays se posicionan sobre el área de imagen */
