@@ -3,6 +3,11 @@
  * Transforma un grid único en "steps" con scroll snap
  * Desktop: 1 fila por step
  * Mobile: 2 filas por step
+ *
+ * Fix iOS Safari:
+ * - Fallback estable para cols si --work-cols todavía no está resuelto
+ * - Rebuild extra post-load (Safari ajusta viewport / barras luego del primer render)
+ * - Resize + orientationchange con debounce
  */
 
 (() => {
@@ -22,10 +27,18 @@
         return Number.isFinite(n) && n > 0 ? n : fallback;
     };
 
-    // Obtener número de columnas desde CSS
-    const getCols = () => readCSSInt("--work-cols", 3);
+    // ✅ Fallback estable: si --work-cols no está listo, inferimos por breakpoint real
+    const getCols = () => {
+        const raw = getComputedStyle(document.documentElement)
+            .getPropertyValue("--work-cols")
+            .trim();
+        const n = parseInt(raw, 10);
+        if (Number.isFinite(n) && n > 0) return n;
 
-    // Obtener filas por step desde CSS (desktop=1, mobile=2)
+        return window.matchMedia("(max-width: 768px)").matches ? 2 : 3;
+    };
+
+    // Filas por step desde CSS (desktop=1, mobile=2)
     const getRowsPerStep = () => {
         const raw = getComputedStyle(document.documentElement)
             .getPropertyValue("--work-rows-per-step")
@@ -74,12 +87,11 @@
 
         lastSignature = signature;
 
-        // ✅ CLAVE: agarrar las cards desde TODO el portfolio, no solo desde #work-grid
-        // Así funciona tanto la primera carga como los resize (cuando las cards ya están dentro de steps).
+        // Agarrar las cards desde TODO el portfolio (funciona en primera carga + resize)
         const cards = Array.from(portfolioSection.querySelectorAll(".work-card"));
         if (cards.length === 0) return;
 
-        // Borramos steps viejos (aunque eso “saque” las cards del DOM, nosotros ya tenemos las referencias)
+        // Borrar steps viejos (las cards se reinsertan)
         portfolioSection.querySelectorAll(".work-step").forEach((el) => el.remove());
         firstStepElement = null;
 
@@ -105,25 +117,39 @@
         });
     };
 
+    // Helpers
+    const rebuild = () => {
+        buildSteps();
+        adjustFirstStepSpacing();
+    };
+
+    const debounce = (fn, ms = 150) => {
+        let t = null;
+        return (...args) => {
+            clearTimeout(t);
+            t = setTimeout(() => fn(...args), ms);
+        };
+    };
+
     // Ejecutar al cargar
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", buildSteps);
+        document.addEventListener("DOMContentLoaded", rebuild);
     } else {
-        buildSteps();
+        rebuild();
     }
 
-    // Reajustar spacing cuando las imágenes terminen de cargar
+    // ✅ iOS Safari: segundo/tercer pase cuando termina de estabilizar viewport
     window.addEventListener("load", () => {
-        adjustFirstStepSpacing();
+        // 1) inmediatamente
+        rebuild();
+        // 2) después de un tick
+        setTimeout(rebuild, 50);
+        // 3) después de que Safari ajuste barras/viewport
+        setTimeout(rebuild, 250);
     });
 
-    // Rebuild en resize (con debounce)
-    let resizeTimer = null;
-    window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            buildSteps();
-            adjustFirstStepSpacing();
-        }, 150);
-    });
+    // ✅ Resize/orientationchange con debounce (Safari dispara eventos extra)
+    const onResize = debounce(() => rebuild(), 150);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", () => setTimeout(rebuild, 250));
 })();
