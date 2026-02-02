@@ -758,6 +758,35 @@ body.is-ready .contact-toggle {
   .project-nav__icon {
     display: none;
   }
+
+
+
+  /* iOS Safari: eliminar highlight gris al tap */
+  .project-nav,
+  .project-nav * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+  }
+
+  /* iOS Safari: sacar "appearance" de botón (a veces genera sombreado) */
+  .project-nav {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Evitar que el tap deje focus visible/gris */
+  .project-nav:focus {
+    outline: none;
+  }
+
+  .project-nav:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+
 }
 
 
