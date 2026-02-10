@@ -1,0 +1,162 @@
+/* ========== HOME: PORTFOLIO GRID ========== */
+
+/* Scroll snap en el html */
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* ========== PORTFOLIO SECTION ========== */
+.work-portfolio {
+    /* Sin padding, el grid maneja su propio espaciado */
+}
+
+/* Grid simple y libre */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--work-cols), 1fr);
+    column-gap: var(--grid-gap-x);
+    row-gap: var(--grid-gap-y);
+    transition: padding-top 3500ms ease;
+}
+
+/* Solo las cards marcadas tienen scroll snap */
+.work-card.snap-point {
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
+    padding-bottom: var(--grid-gap-y);
+    /* Agrega espacio visual debajo */
+    margin-bottom: calc(var(--grid-gap-y) * -1);
+    /* Compensa para mantener el gap del grid */
+}
+
+/* ========== ANIMACIONES DE ENTRADA ========== */
+
+/* Estado inicial: invisibles y desplazadas hacia arriba */
+.work-card.animate-in {
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+/* Animación: fade in + desplazamiento hacia abajo */
+body.is-ready .work-card.animate-in {
+    animation: cardFadeIn 6000ms ease forwards;
+}
+
+/* Delays en cascada (card 1 es la última en terminar) */
+body.is-ready .work-card.animate-delay-1 {
+    animation-delay: 10ms;
+}
+
+body.is-ready .work-card.animate-delay-2 {
+    animation-delay: 550ms;
+}
+
+body.is-ready .work-card.animate-delay-3 {
+    animation-delay: 1200ms;
+}
+
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accesibilidad: desactivar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .work-card.animate-in {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
+}
+
+/* ========== CARD ========== */
+.work-card {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.work-card__title {
+    margin: 0;
+    font-size: var(--title-size);
+    font-weight: 400;
+    line-height: var(--title-leading);
+    min-height: var(--card-title-h);
+    display: flex;
+    align-items: flex-end;
+    font-style: normal;
+    letter-spacing: 0%;
+
+    transition: letter-spacing 500ms ease;
+}
+
+.work-card__link {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.work-card:hover .work-card__title {
+    letter-spacing: 1px;
+}
+
+.work-card__media {
+    aspect-ratio: 16/9;
+    width: 100%;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.work-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========== INTRO ANIMATION: primera fila ========== */
+
+/* Estado inicial */
+.work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+    opacity: 0;
+    transform: translateY(-300px);
+}
+
+/* Disparo */
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+    animation: workCardIn 3000ms ease forwards;
+}
+
+/* Stagger */
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(1) {
+    animation-delay: 400ms;
+}
+
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(2) {
+    animation-delay: 200ms;
+}
+
+body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
+    animation-delay: 0ms;
+}
+
+@keyframes workCardIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}

@@ -63,7 +63,6 @@ window.addEventListener("load", () => {
 
   const showToast = () => {
     if (!toast) return;
-
     toast.classList.add("is-visible");
     toast.setAttribute("aria-hidden", "false");
 
@@ -100,6 +99,130 @@ window.addEventListener("load", () => {
 })();
 
 // ==============================
+// AJUSTAR PADDING-TOP DEL GRID + SCROLL SNAP SELECTIVO (solo home)
+// ==============================
+(() => {
+  // Solo correr en la home
+  if (!document.body.classList.contains("page--home")) return;
+
+  const grid = document.querySelector(".work-grid");
+  if (!grid) return;
+
+  const adjustGridPadding = () => {
+    const card = document.querySelector(".work-card");
+    if (!card || !grid) return;
+
+    const cardHeight = card.offsetHeight;
+    const headerHeight = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue("--header-h")
+    );
+    const gridGapY = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue("--grid-gap-y")
+    );
+
+    // Detectar si estamos en mobile (2 filas) o desktop (1 fila)
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const rowsToShow = isMobile ? 2 : 1;
+    
+    // Altura total: (card × filas) + (gap × espacios entre filas)
+    const totalContentHeight = (cardHeight * rowsToShow) + (gridGapY * (rowsToShow - 1));
+
+    const paddingTop = Math.max(
+      0,
+      window.innerHeight - headerHeight - totalContentHeight
+    );
+
+    grid.style.paddingTop = `${paddingTop}px`;
+  };
+
+  const assignScrollSnapPoints = () => {
+    const cards = Array.from(grid.querySelectorAll(".work-card"));
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // Remover clases anteriores
+    cards.forEach(card => card.classList.remove("snap-point"));
+
+    if (isMobile) {
+      // Mobile: snap en cards 4, 6, 8, 10... (índices 3, 5, 7, 9...)
+      // Primera fila inferior = card 4 (índice 3)
+      // Luego cada 2 cards (una fila completa en grid de 2 cols)
+      cards.forEach((card, index) => {
+        if (index === 3 || (index > 3 && (index - 3) % 2 === 0)) {
+          card.classList.add("snap-point");
+        }
+      });
+    } else {
+      // Desktop: snap en cards 1, 4, 7, 10... (índices 0, 3, 6, 9...)
+      // Cada 3 cards (una fila completa en grid de 3 cols)
+      cards.forEach((card, index) => {
+        if (index % 3 === 0) {
+          card.classList.add("snap-point");
+        }
+      });
+    }
+  };
+
+  const rebuild = () => {
+    adjustGridPadding();
+    assignScrollSnapPoints();
+  };
+
+  // Guardar el breakpoint anterior para detectar cambios
+  let wasMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  // Ejecutar inmediatamente al cargar (antes de animaciones)
+  // DOMContentLoaded se dispara antes que 'load' y antes de is-ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", rebuild);
+  } else {
+    rebuild(); // Ya está listo
+  }
+
+  // También ejecutar en 'load' por si las imágenes cambian dimensiones
+  window.addEventListener("load", rebuild);
+
+  // Ejecutar al hacer resize
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      
+      // Detectar si hubo cambio de breakpoint
+      if (isMobile !== wasMobile) {
+        // Desactivar scroll snap temporalmente
+        document.documentElement.style.scrollSnapType = "none";
+        
+        rebuild();
+        
+        // Esperar a que las imágenes se ajusten al nuevo ancho
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            // Recalcular después de que el grid se haya redimensionado
+            rebuild();
+            
+            // Si estamos arriba de todo (viewport inicial), quedarse arriba
+            if (window.scrollY < window.innerHeight) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+            
+            // Reactivar scroll snap después de la transición
+            setTimeout(() => {
+              document.documentElement.style.scrollSnapType = "y mandatory";
+            }, 800);
+          });
+        });
+        
+        wasMobile = isMobile;
+      } else {
+        // Si no cambió el breakpoint, rebuild normal
+        rebuild();
+      }
+    }, 150);
+  });
+})();
+
+// ==============================
 // ESC => VOLVER AL HOME (solo proyectos)
 // ==============================
 (() => {
@@ -108,8 +231,6 @@ window.addEventListener("load", () => {
 
   document.addEventListener("keyup", (e) => {
     if (e.key !== "Escape") return;
-
     window.location.href = "../index.html";
   });
-
 })();

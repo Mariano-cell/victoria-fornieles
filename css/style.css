@@ -32,6 +32,10 @@ img {
 .site-header__inner {
   width: 100%;
   padding-inline: var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .brand {
@@ -44,25 +48,9 @@ img {
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
-}
-
-/* ========== TYPEWRITER LOGO ========== */
-
-.brand__name {
   display: inline-block;
   white-space: pre-line;
   /* mantiene tu <br> */
-}
-
-
-
-@media (prefers-reduced-motion: reduce) {
-  .brand__name.is-typing::after {
-    animation: none;
-  }
-}
-
-.brand__name {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -80,400 +68,14 @@ img {
   opacity: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ========== MAIN ========== */
-.site-main {
-  padding-inline: var(--container-pad);
-  padding-bottom: var(--container-pad);
-  padding-top: 0;
-}
-
-/* ========== SCROLL SNAP ========== */
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* ========== PORTFOLIO SECTION ========== */
-.work-portfolio {
-  /* Este contenedor será envuelto por "steps" dinámicamente */
-}
-
-/* ========== FADE UNDER HEADER ========== */
-
-.work-portfolio__fade {
-
-  --fade-h: 150px;
-
-  /* Safari/WebKit */
-  -webkit-mask-image: linear-gradient(to bottom,
-      transparent 0,
-      transparent var(--header-h),
-      black calc(var(--header-h) + var(--fade-h)),
-      black 100%);
-
-  /* Standard */
-  mask-image: linear-gradient(to bottom,
-      transparent 0,
-      transparent var(--header-h),
-      black calc(var(--header-h) + var(--fade-h)),
-      black 100%);
-
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-}
-
-
-
-.site-main {
-  position: relative;
-}
-
-/* Capa que genera el fade en la zona del header */
-.site-main::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: calc(var(--header-h) + var(--fade-h));
-  pointer-events: none;
-
-  /* Debajo del header (z=10), arriba del contenido */
-  z-index: 9;
-
-  /* Fondo blanco + degradé a transparente */
-  background: linear-gradient(to bottom,
-      #fff 0,
-      #fff var(--header-h),
-      rgba(255, 255, 255, 0) calc(var(--header-h) + var(--fade-h)));
-}
-
-
-
-
-
-
-/* Cada "step" = una fila con scroll snap */
-.work-step {
-  display: flex;
-  align-items: flex-end;
-  padding-top: var(--step-pad-top);
-  padding-bottom: var(--step-pad-bottom);
-  scroll-snap-align: end;
-  scroll-snap-stop: always;
-}
-
-/* Solo el primer step tiene padding-top dinámico */
-.work-step:first-child {
-  padding-top: 0;
-  /* Será ajustado por JS */
-}
-
-/* La fila dentro de cada step */
-.work-step__row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(var(--work-cols), 1fr);
-  column-gap: var(--grid-gap-x);
-  row-gap: var(--grid-gap-y);
-}
-
-/* Grid original (oculto, usado como fuente por JS) */
-.work-grid {
-  display: none;
-}
-
-/* ========== CARD ========== */
-.work-card {
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.work-card__title {
-  margin: 0;
-  font-size: var(--title-size);
-  font-weight: 400;
-  line-height: var(--title-leading);
-  min-height: var(--card-title-h);
-  display: flex;
-  align-items: flex-end;
-  font-style: normal;
-  letter-spacing: 0%;
-
-  transition:
-    letter-spacing 500ms ease;
-}
-
-.work-card__link {
-  display: block;
-  flex: 1;
-  min-height: 0;
-  text-decoration: none;
-  color: inherit;
-}
-
-.work-card:hover .work-card__title {
-  letter-spacing: 1px;
-}
-
-.work-card__media {
-  aspect-ratio: 16/9;
-  width: 100%;
-  overflow: hidden;
-  background: #f5f5f5;
-}
-
-.work-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* BLOQUE DE ANIMACION */
-
-/* ========== Intro animation: primera fila ========== */
-
-/* Estado inicial */
-.work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-  opacity: 0;
-  transform: translateY(-300px);
-}
-
-/* Disparo */
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-  animation: workCardIn 3000ms ease forwards;
-}
-
-/* Stagger */
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(1) {
-  animation-delay: 400ms;
-}
-
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(2) {
-  animation-delay: 200ms;
-}
-
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
-  animation-delay: 0ms;
-}
-
-@keyframes workCardIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Accesibilidad */
+/* Accesibilidad typewriter */
 @media (prefers-reduced-motion: reduce) {
-  .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-    opacity: 1;
-    transform: none;
+  .brand__name.is-typing::after {
     animation: none;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ========== PROJECT VIEWER (BAMBÚ y resto) ========== */
-
-/* Ajustes de página proyecto (ya tenías algunos; dejo una versión consistente) */
-.page--project .site-main {
-  padding-inline: var(--container-pad);
-  padding-bottom: 48px;
-  padding-top: 0;
-}
-
-.project {
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-top: 2rem;
-}
-
-/* 3 columnas: flecha / contenido / flecha */
-.project-viewer {
-  --nav-w: 56px;
-
-  display: grid;
-  grid-template-columns: var(--nav-w) minmax(0, 1fr) var(--nav-w);
-  align-items: center;
-
-  /* el contenedor ocupa todo el ancho del main, por eso las flechas no se mueven */
-  width: 100%;
-}
-
-/* Bloques flechas */
-.project-nav--prev {
-  justify-self: start;
-}
-
-.project-nav--next {
-  justify-self: end;
-}
-
-.project-nav {
-  width: var(--nav-w);
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: inherit;
-}
-
-.project-nav:disabled {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.project-nav__icon {
-  font-size: 22px;
-  line-height: 1;
-  user-select: none;
-  font-family: inherit;
-}
-
-.project-nav__icon img {
-  width: 18px;
-  height: auto;
-  display: block;
-}
-
-/* Bloque 2: columna central fija (no se achica por la imagen) */
-.project-stage {
-  grid-column: 2;
-
-  width: fit-content;
-  /* clave */
-  max-width: 100%;
-  /* para que no se salga en pantallas chicas */
-  margin-inline: auto;
-  /* clave: lo centra dentro del 1fr */
-
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.project-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-/* Figure */
-.project-figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.project-media {
-  /* elegí un alto fijo razonable; podés ajustar este número */
-  height: 520px;
-
-  /* opcional: evitás saltos si alguna imagen tarda */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* como ya tenías max-height, lo sacamos para que el height mande */
-  max-height: none;
-}
-
-.project-img {
-  max-width: 100%;
-  max-height: none;
-
-  object-fit: contain;
-  display: block;
-
-  height: 100%;
-  width: auto;
-
-}
-
-.project-caption {
-  font-size: 14px;
-  line-height: 1.25;
-  max-width: 70ch;
-  color: black;
-}
-
-.project-category {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 100%;
-  letter-spacing: 0;
-}
-
-
 /* ========== HEADER CONTACT TOGGLE ========== */
-
-.site-header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
 
 /* Bloque derecho (icono + panel) */
 .site-header__contact {
@@ -559,65 +161,12 @@ body.is-ready .contact-toggle {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-
 /* Estado abierto */
 .site-header__contact.is-open .header-email {
   transform: translateY(0);
   pointer-events: auto;
   opacity: 1;
 }
-
-.header-email__link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.header-email__link:hover {
-  text-decoration: underline;
-}
-
-/* Accesibilidad */
-.contact-toggle:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.6);
-  outline-offset: 2px;
-}
-
-/* =========================
-   HEADER EMAIL — BUTTON RESET
-========================= */
-
-.header-email__copy {
-  all: unset;
-  /* borra estilos nativos del button */
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  cursor: pointer;
-  width: 100%;
-
-  /* hereda tipografía como antes */
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: black;
-}
-
-.header-email__link {
-  font-size: 20px;
-  /* el que ya usabas */
-  line-height: 1.2;
-  white-space: nowrap;
-  color: black;
-}
-
-
-.header-email__copy:hover img {
-  opacity: 1;
-}
-
 
 .header-email__label {
   font-size: 1.2rem;
@@ -647,156 +196,30 @@ body.is-ready .contact-toggle {
 }
 
 .header-email__copy-icon img {
-  width: 15x;
+  width: 15px;
   height: 15px;
   display: block;
   opacity: 1;
 }
 
-
-
-
-@media (max-width: 768px) {
-
-  /* el main ocupa el viewport menos el header */
-  .page--project .site-main {
-    min-height: calc(100vh - var(--header-h));
-    display: flex;
-    align-items: center;
-    /* centra verticalmente */
-  }
-
-  /* aseguramos que el proyecto no se pegue arriba */
-  .page--project .project {
-    padding-top: 0;
-    margin-block: auto;
-  }
-
-
-  /* el viewer ya no necesita 3 columnas */
-  .project-viewer {
-    position: relative;
-    display: block;
-  }
-
-  /* referencia para ubicar overlays */
-  .project-stage {
-    position: relative;
-  }
-
-  /* el área donde vive la imagen (si querés, ajustá) */
-  .project-media {
-    position: relative;
-    height: auto;
-  }
-
-  /* botones como overlays invisibles */
-  .project-nav {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-
-    /* superficie amplia */
-    padding: 0;
-    margin: 0;
-
-    /* invisibles */
-    background: transparent;
-    border: 0;
-
-    opacity: 0;
-    /* IMPORTANTE: aunque opacity 0, sigue siendo clickeable */
-    cursor: pointer;
-
-    /* centrar por si algún día querés mostrar icono */
-    display: block;
-  }
-
-  .project-img {
-    height: auto;
-    width: auto;
-    max-height: calc(100vh - var(--header-h) - 160px);
-    /* tu regla original */
-  }
-
-  /* los overlays se posicionan sobre el área de imagen */
-  .project-nav--prev {
-    left: 0;
-  }
-
-  .project-nav--next {
-    right: 0;
-  }
-
-  /* clave: que el overlay esté encima de la imagen */
-  .project-nav {
-    z-index: 5;
-  }
-
-  /* y que la imagen quede debajo */
-  .project-media {
-    z-index: 1;
-  }
-
-  /* accesibilidad: si alguien navega con teclado, que se vea */
-  .project-nav:focus-visible {
-    outline: 2px solid rgba(0, 0, 0, .55);
-    outline-offset: -2px;
-    opacity: 1;
-    /* sólo al focus */
-  }
-
-  /* opcional: feedback sutil al tocar (no visible permanente) */
-  .project-nav:active {
-    opacity: 0;
-    /* micro “flash” */
-    background: transparent;
-  }
-
-  /* si tus iconos molestan en mobile, ocultalos */
-  .project-nav__icon {
-    display: none;
-  }
-
-
-
-  /* iOS Safari: eliminar highlight gris al tap */
-  .project-nav,
-  .project-nav * {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-touch-callout: none;
-  }
-
-  /* iOS Safari: sacar "appearance" de botón (a veces genera sombreado) */
-  .project-nav {
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  /* Evitar que el tap deje focus visible/gris */
-  .project-nav:focus {
-    outline: none;
-  }
-
-  .project-nav:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-
+.header-email__copy:hover img {
+  opacity: 1;
 }
 
+/* Accesibilidad */
+.contact-toggle:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.6);
+  outline-offset: 2px;
+}
 
+/* ========== MAIN ========== */
+.site-main {
+  padding-inline: var(--container-pad);
+  padding-bottom: var(--container-pad);
+  padding-top: 0;
+}
 
-
-
-
-/* =========================
-   COPY TOAST
-========================= */
+/* ========== COPY TOAST ========== */
 
 .copy-toast {
   position: fixed;
@@ -832,52 +255,5 @@ body.is-ready .contact-toggle {
 @media (prefers-reduced-motion: reduce) {
   .copy-toast {
     transition: none;
-  }
-}
-
-.page--project .brand__live {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-
-  /* El viewer ocupa el viewport disponible */
-  .project-viewer {
-    min-height: calc(100vh - var(--header-h));
-    display: flex;
-    align-items: center;
-  }
-
-  /* Columna central */
-  .project-stage {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-height: 100%;
-  }
-
-  /* La imagen vive en un contenedor flexible */
-  .project-media {
-    flex: 1;
-    /* CLAVE */
-    min-height: 0;
-    /* CLAVE para flex */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* La imagen nunca se come el layout */
-  .project-img {
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* El category SIEMPRE visible */
-  .project-category {
-    margin-top: 8px;
-    flex-shrink: 0;
   }
 }

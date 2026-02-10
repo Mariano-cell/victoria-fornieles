@@ -1,0 +1,288 @@
+/* ========== PROJECT VIEWER ========== */
+
+/* Ajustes de página proyecto */
+.page--project .site-main {
+    padding-inline: var(--container-pad);
+    padding-bottom: 48px;
+    padding-top: 0;
+}
+
+.project {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-top: 2rem;
+}
+
+/* 3 columnas: flecha / contenido / flecha */
+.project-viewer {
+    --nav-w: 56px;
+
+    display: grid;
+    grid-template-columns: var(--nav-w) minmax(0, 1fr) var(--nav-w);
+    align-items: center;
+
+    /* el contenedor ocupa todo el ancho del main, por eso las flechas no se mueven */
+    width: 100%;
+}
+
+/* Bloques flechas */
+.project-nav--prev {
+    justify-self: start;
+}
+
+.project-nav--next {
+    justify-self: end;
+}
+
+.project-nav {
+    width: var(--nav-w);
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+}
+
+.project-nav:disabled {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.project-nav__icon {
+    font-size: 22px;
+    line-height: 1;
+    user-select: none;
+    font-family: inherit;
+}
+
+.project-nav__icon img {
+    width: 18px;
+    height: auto;
+    display: block;
+}
+
+/* Bloque 2: columna central fija (no se achica por la imagen) */
+.project-stage {
+    grid-column: 2;
+
+    width: fit-content;
+    /* clave */
+    max-width: 100%;
+    /* para que no se salga en pantallas chicas */
+    margin-inline: auto;
+    /* clave: lo centra dentro del 1fr */
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Figure */
+.project-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-media {
+    /* elegí un alto fijo razonable; podés ajustar este número */
+    height: 520px;
+
+    /* opcional: evitás saltos si alguna imagen tarda */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* como ya tenías max-height, lo sacamos para que el height mande */
+    max-height: none;
+}
+
+.project-img {
+    max-width: 100%;
+    max-height: none;
+
+    object-fit: contain;
+    display: block;
+
+    height: 100%;
+    width: auto;
+}
+
+.project-caption {
+    font-size: 14px;
+    line-height: 1.25;
+    max-width: 70ch;
+    color: black;
+}
+
+.project-category {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+/* Logo visible en proyectos */
+.page--project .brand__live {
+    opacity: 1;
+}
+
+/* ========== PROJECT: RESPONSIVE MOBILE ========== */
+
+@media (max-width: 768px) {
+
+    /* el main ocupa el viewport menos el header */
+    .page--project .site-main {
+        min-height: calc(100vh - var(--header-h));
+        display: flex;
+        align-items: center;
+        /* centra verticalmente */
+    }
+
+    /* aseguramos que el proyecto no se pegue arriba */
+    .page--project .project {
+        padding-top: 0;
+        margin-block: auto;
+    }
+
+    /* El viewer ocupa el viewport disponible */
+    .project-viewer {
+        position: relative;
+        display: block;
+        min-height: calc(100vh - var(--header-h));
+        display: flex;
+        align-items: center;
+    }
+
+    /* Columna central */
+    .project-stage {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: 100%;
+    }
+
+    /* La imagen vive en un contenedor flexible */
+    .project-media {
+        position: relative;
+        height: auto;
+        flex: 1;
+        /* CLAVE */
+        min-height: 0;
+        /* CLAVE para flex */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* La imagen nunca se come el layout */
+    .project-img {
+        height: auto;
+        width: auto;
+        max-height: calc(100vh - var(--header-h) - 160px);
+        object-fit: contain;
+    }
+
+    /* El category SIEMPRE visible */
+    .project-category {
+        margin-top: 8px;
+        flex-shrink: 0;
+    }
+
+    /* botones como overlays invisibles */
+    .project-nav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+
+        /* superficie amplia */
+        padding: 0;
+        margin: 0;
+
+        /* invisibles */
+        background: transparent;
+        border: 0;
+
+        opacity: 0;
+        /* IMPORTANTE: aunque opacity 0, sigue siendo clickeable */
+        cursor: pointer;
+
+        /* centrar por si algún día querés mostrar icono */
+        display: block;
+        z-index: 5;
+    }
+
+    /* los overlays se posicionan sobre el área de imagen */
+    .project-nav--prev {
+        left: 0;
+    }
+
+    .project-nav--next {
+        right: 0;
+    }
+
+    /* y que la imagen quede debajo */
+    .project-media {
+        z-index: 1;
+    }
+
+    /* accesibilidad: si alguien navega con teclado, que se vea */
+    .project-nav:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, .55);
+        outline-offset: -2px;
+        opacity: 1;
+        /* sólo al focus */
+    }
+
+    /* opcional: feedback sutil al tocar (no visible permanente) */
+    .project-nav:active {
+        opacity: 0;
+        /* micro "flash" */
+        background: transparent;
+    }
+
+    /* si tus iconos molestan en mobile, ocultalos */
+    .project-nav__icon {
+        display: none;
+    }
+
+    /* iOS Safari: eliminar highlight gris al tap */
+    .project-nav,
+    .project-nav * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-touch-callout: none;
+    }
+
+    /* iOS Safari: sacar "appearance" de botón (a veces genera sombreado) */
+    .project-nav {
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    /* Evitar que el tap deje focus visible/gris */
+    .project-nav:focus {
+        outline: none;
+    }
+
+    .project-nav:focus:not(:focus-visible) {
+        outline: none;
+    }
+}
