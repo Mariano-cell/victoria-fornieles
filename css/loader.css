@@ -27,22 +27,23 @@
 
 .page-loader__image {
     width: 120px;
-    /* Ajustá según el tamaño de tu PNG */
     height: auto;
 
-    /* Animación de pulso */
+    /* Animación de pulso que termina en opacity 0 */
     animation: loaderPulse 1800ms ease-in-out infinite;
 }
 
 @keyframes loaderPulse {
-
-    0%,
-    100% {
+    0% {
         opacity: 0.3;
     }
 
     50% {
         opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 

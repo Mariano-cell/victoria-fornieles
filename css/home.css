@@ -1,5 +1,17 @@
 /* ========== HOME: PORTFOLIO GRID ========== */
 
+/* Ocultar todo el contenido hasta que is-ready se active */
+.page--home .site-header,
+.page--home .site-main {
+    opacity: 0;
+}
+
+body.is-ready .site-header,
+body.is-ready .site-main {
+    opacity: 1;
+    transition: opacity 400ms ease;
+}
+
 /* Scroll snap en el html */
 html {
     scroll-snap-type: y mandatory;
@@ -17,7 +29,7 @@ html {
     grid-template-columns: repeat(var(--work-cols), 1fr);
     column-gap: var(--grid-gap-x);
     row-gap: var(--grid-gap-y);
-    transition: padding-top 3500ms ease;
+    transition: padding-top 400ms ease;
 }
 
 /* Solo las cards marcadas tienen scroll snap */
@@ -35,25 +47,25 @@ html {
 /* Estado inicial: invisibles y desplazadas hacia arriba */
 .work-card.animate-in {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-200px);
 }
 
 /* Animación: fade in + desplazamiento hacia abajo */
 body.is-ready .work-card.animate-in {
-    animation: cardFadeIn 6000ms ease forwards;
+    animation: cardFadeIn 4000ms ease forwards;
 }
 
 /* Delays en cascada (card 1 es la última en terminar) */
 body.is-ready .work-card.animate-delay-1 {
-    animation-delay: 10ms;
+    animation-delay: 0ms;
 }
 
 body.is-ready .work-card.animate-delay-2 {
-    animation-delay: 550ms;
+    animation-delay: 150ms;
 }
 
 body.is-ready .work-card.animate-delay-3 {
-    animation-delay: 1200ms;
+    animation-delay: 300ms;
 }
 
 @keyframes cardFadeIn {

@@ -1,6 +1,4 @@
-window.addEventListener("load", () => {
-  document.body.classList.add("is-ready");
-});
+// is-ready es agregado por loader.js después del fade-out + delay
 
 // ==============================
 // HEADER EMAIL TOGGLE
@@ -123,7 +121,7 @@ window.addEventListener("load", () => {
     // Detectar si estamos en mobile (2 filas) o desktop (1 fila)
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const rowsToShow = isMobile ? 2 : 1;
-    
+
     // Altura total: (card × filas) + (gap × espacios entre filas)
     const totalContentHeight = (cardHeight * rowsToShow) + (gridGapY * (rowsToShow - 1));
 
@@ -187,32 +185,32 @@ window.addEventListener("load", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      
+
       // Detectar si hubo cambio de breakpoint
       if (isMobile !== wasMobile) {
         // Desactivar scroll snap temporalmente
         document.documentElement.style.scrollSnapType = "none";
-        
+
         rebuild();
-        
+
         // Esperar a que las imágenes se ajusten al nuevo ancho
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             // Recalcular después de que el grid se haya redimensionado
             rebuild();
-            
+
             // Si estamos arriba de todo (viewport inicial), quedarse arriba
             if (window.scrollY < window.innerHeight) {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
-            
+
             // Reactivar scroll snap después de la transición
             setTimeout(() => {
               document.documentElement.style.scrollSnapType = "y mandatory";
             }, 800);
           });
         });
-        
+
         wasMobile = isMobile;
       } else {
         // Si no cambió el breakpoint, rebuild normal

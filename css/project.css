@@ -1,5 +1,17 @@
 /* ========== PROJECT VIEWER ========== */
 
+/* Fade-in inicial de la página completa */
+.page--project {
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: opacity 400ms ease, transform 500ms ease;
+}
+
+.page--project.is-loaded {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 /* Ajustes de página proyecto */
 .page--project .site-main {
     padding-inline: var(--container-pad);
