@@ -109,9 +109,20 @@
   // ⭐ FIX SAFARI: Desactivar scroll snap hasta que todo esté listo
   document.documentElement.style.scrollSnapType = "none";
 
+  // ⭐ FIX MOBILE: Cachear el padding calculado para evitar espasmos por la barra de Safari
+  let cachedMobilePadding = null;
+
   const adjustGridPadding = () => {
     const card = document.querySelector(".work-card");
     if (!card || !grid) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // ⭐ Si es mobile y ya calculamos el padding, usar el valor cacheado
+    if (isMobile && cachedMobilePadding !== null) {
+      grid.style.paddingTop = cachedMobilePadding;
+      return;
+    }
 
     const cardHeight = card.offsetHeight;
     const headerHeight = parseInt(
@@ -122,7 +133,6 @@
     );
 
     // Detectar si estamos en mobile (2 filas) o desktop (1 fila)
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const rowsToShow = isMobile ? 2 : 1;
 
     // Altura total: (card × filas) + (gap × espacios entre filas)
@@ -134,6 +144,11 @@
     );
 
     grid.style.paddingTop = `${paddingTop}px`;
+
+    // ⭐ Guardar el valor cacheado en mobile
+    if (isMobile) {
+      cachedMobilePadding = `${paddingTop}px`;
+    }
   };
 
   const assignScrollSnapPoints = () => {
@@ -207,6 +222,9 @@
 
       // Detectar si hubo cambio de breakpoint
       if (isMobile !== wasMobile) {
+        // ⭐ Limpiar cache al cambiar de breakpoint
+        cachedMobilePadding = null;
+
         // Desactivar scroll snap temporalmente
         document.documentElement.style.scrollSnapType = "none";
 
