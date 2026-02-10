@@ -106,6 +106,9 @@
   const grid = document.querySelector(".work-grid");
   if (!grid) return;
 
+  // ⭐ FIX SAFARI: Desactivar scroll snap hasta que todo esté listo
+  document.documentElement.style.scrollSnapType = "none";
+
   const adjustGridPadding = () => {
     const card = document.querySelector(".work-card");
     if (!card || !grid) return;
@@ -176,8 +179,24 @@
     rebuild(); // Ya está listo
   }
 
-  // También ejecutar en 'load' por si las imágenes cambian dimensiones
-  window.addEventListener("load", rebuild);
+  // ⭐ FIX SAFARI: Esperar a que las imágenes carguen Y las animaciones terminen
+  window.addEventListener("load", () => {
+    rebuild();
+
+    // Forzar scroll al top (Safari a veces "recuerda" posiciones)
+    window.scrollTo(0, 0);
+
+    // Esperar a que las animaciones CSS terminen (4000ms según tu CSS)
+    setTimeout(() => {
+      // Recalcular una vez más por si las animaciones cambiaron algo
+      rebuild();
+
+      // Reactivar scroll snap DESPUÉS de todo
+      requestAnimationFrame(() => {
+        document.documentElement.style.scrollSnapType = "y mandatory";
+      });
+    }, 4200); // 4000ms de animación + 200ms de margen
+  });
 
   // Ejecutar al hacer resize
   let resizeTimeout;
