@@ -23,6 +23,12 @@
         // Cards 3 y 6 tienen el mismo delay (delay-1)
         cards[2]?.classList.add("animate-in", "animate-delay-1");
         cards[5]?.classList.add("animate-in", "animate-delay-1");
+
+        // SAFARI FIX: Forzar reflow para que Safari reconozca el estado inicial
+        // antes de que is-ready dispare las animaciones
+        if (cards[0]) {
+            void cards[0].offsetHeight;
+        }
     };
 
     // Ejecutar cuando el body tenga la clase is-ready

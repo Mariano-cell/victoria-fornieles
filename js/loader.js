@@ -16,7 +16,10 @@
     };
   
     // Ocultar cuando todo cargó
-    window.addEventListener("load", hideLoader);
+    // Safari necesita un pequeño delay extra para asegurar que todo está renderizado
+    window.addEventListener("load", () => {
+      setTimeout(hideLoader, 150);
+    });
   
     // Timeout de seguridad: si tarda más de 10 segundos, ocultar igual
     setTimeout(hideLoader, 10000);
