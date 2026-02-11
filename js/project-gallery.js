@@ -36,7 +36,7 @@
             { src: "../assets/img/projects/tomo/frame-45.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/frame-57.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/a4-13.jpg", category: "BRANDING", caption: "", alt: "" },
-           
+
         ],
 
         diagonal: [
@@ -232,17 +232,37 @@
         btnPrev.disabled = index === 0;
         btnNext.disabled = index === slides.length - 1;
 
-        img.src = s.src;
-        img.alt = s.alt || "";
-
-        if (caption) caption.textContent = s.caption || "";
-
-        // ✅ NUEVO: category sincronizada con la imagen
-        // Fallback: si no seteaste category en el slide, muestra vacío
-        if (category) category.textContent = s.category || "";
-
+        // Precargar 2 fotos adelante y 2 atrás
+        preload(index - 2);
         preload(index - 1);
         preload(index + 1);
+        preload(index + 2);
+
+        // Fade: fade out → esperar → cambiar src → fade in
+        img.style.opacity = "0";
+
+        const newImg = new Image();
+        newImg.src = s.src;
+
+        const swap = () => {
+            img.src = s.src;
+            img.alt = s.alt || "";
+            if (caption) caption.textContent = s.caption || "";
+            if (category) category.textContent = s.category || "";
+            img.style.opacity = "1";
+        };
+
+        if (newImg.complete) {
+            // Ya estaba en caché: swap casi inmediato
+            setTimeout(swap, 80);
+        } else {
+            // Esperar a que cargue, con un timeout de seguridad de 1500ms
+            const timeout = setTimeout(swap, 1500);
+            newImg.onload = () => {
+                clearTimeout(timeout);
+                swap();
+            };
+        }
     };
 
     btnPrev.addEventListener("click", () => {
