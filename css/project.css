@@ -111,7 +111,7 @@
 
 .project-media {
     /* elegí un alto fijo razonable; podés ajustar este número */
-    height: 520px;
+    height: 400px;
 
     /* opcional: evitás saltos si alguna imagen tarda */
     display: flex;
@@ -156,56 +156,59 @@
 
 @media (max-width: 768px) {
 
-    /* el main ocupa el viewport menos el header */
     .page--project .site-main {
-        min-height: calc(100vh - var(--header-h));
+        height: calc(100vh - var(--header-h));
         display: flex;
         align-items: center;
-        /* centra verticalmente */
+        justify-content: center;
+        padding: 0;
+        padding-inline: var(--container-pad);
     }
 
-    /* aseguramos que el proyecto no se pegue arriba */
     .page--project .project {
         padding-top: 0;
-        margin-block: auto;
-    }
-
-    /* El viewer ocupa el viewport disponible */
-    .project-viewer {
-        position: relative;
-        display: block;
-        min-height: calc(100vh - var(--header-h));
-        display: flex;
-        align-items: center;
-    }
-
-    /* Columna central */
-    .project-stage {
-        position: relative;
-        display: flex;
-        flex-direction: column;
         width: 100%;
-        max-height: 100%;
-    }
-
-    /* La imagen vive en un contenedor flexible */
-    .project-media {
-        position: relative;
-        height: auto;
-        flex: 1;
-        /* CLAVE */
-        min-height: 0;
-        /* CLAVE para flex */
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* La imagen nunca se come el layout */
+    /* El viewer se centra verticalmente */
+    .project-viewer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* El stage tiene altura auto y se centra */
+    .project-stage {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+    }
+
+    /* Título no crece */
+    .project-title {
+        flex-shrink: 0;
+    }
+
+    /* La imagen mantiene su altura fija de 400px */
+    .project-media {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .project-img {
-        height: auto;
         width: auto;
-        max-height: calc(100vh - var(--header-h) - 160px);
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
     }
 
@@ -221,25 +224,16 @@
         top: 0;
         bottom: 0;
         width: 50%;
-
-        /* superficie amplia */
         padding: 0;
         margin: 0;
-
-        /* invisibles */
         background: transparent;
         border: 0;
-
         opacity: 0;
-        /* IMPORTANTE: aunque opacity 0, sigue siendo clickeable */
         cursor: pointer;
-
-        /* centrar por si algún día querés mostrar icono */
         display: block;
         z-index: 5;
     }
 
-    /* los overlays se posicionan sobre el área de imagen */
     .project-nav--prev {
         left: 0;
     }
@@ -248,27 +242,21 @@
         right: 0;
     }
 
-    /* y que la imagen quede debajo */
     .project-media {
         z-index: 1;
     }
 
-    /* accesibilidad: si alguien navega con teclado, que se vea */
     .project-nav:focus-visible {
         outline: 2px solid rgba(0, 0, 0, .55);
         outline-offset: -2px;
         opacity: 1;
-        /* sólo al focus */
     }
 
-    /* opcional: feedback sutil al tocar (no visible permanente) */
     .project-nav:active {
         opacity: 0;
-        /* micro "flash" */
         background: transparent;
     }
 
-    /* si tus iconos molestan en mobile, ocultalos */
     .project-nav__icon {
         display: none;
     }
