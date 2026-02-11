@@ -18,15 +18,22 @@ html {
     scroll-behavior: smooth;
 }
 
+/* MOBILE: anular scroll-snap en html */
+@media (max-width: 768px) {
+    html {
+        scroll-snap-type: none;
+    }
+}
+
 /* ========== PORTFOLIO SECTION ========== */
 .work-portfolio {
     /* Sin padding, el grid maneja su propio espaciado */
 }
 
-/* MOBILE: Altura total de página definida */
+/* MOBILE: Altura automática según contenido */
 @media (max-width: 768px) {
     .page--home .site-main {
-        min-height: 1400px;
+        min-height: auto;
     }
 }
 
@@ -48,7 +55,7 @@ html {
 
     /* Animación de padding-top cuando is-ready */
     body.is-ready .work-grid {
-        animation: gridPaddingGrow 4000ms ease forwards;
+        animation: gridPaddingGrow 2000ms ease forwards;
     }
 
 }
@@ -67,7 +74,7 @@ html {
     }
 
     to {
-        padding-top: 320px;
+        padding-top: 305px;
     }
 }
 
@@ -81,18 +88,25 @@ html {
     /* Compensa para mantener el gap del grid */
 }
 
+/* MOBILE: anular scroll-snap en las cards */
+@media (max-width: 768px) {
+    .work-card.snap-point {
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+    }
+}
+
 /* ========== ANIMACIONES DE ENTRADA ========== */
 
-/* Estado inicial: invisibles */
 /* Estado inicial: invisibles */
 .work-card.animate-in {
     opacity: 0;
 }
 
-/* MOBILE: desplazamiento Y sutil */
+/* MOBILE: sin desplazamiento Y */
 @media (max-width: 768px) {
     .work-card.animate-in {
-        transform: translateY(-80px);
+        transform: none;
     }
 }
 
@@ -102,8 +116,6 @@ html {
         transform: translateY(-200px);
     }
 }
-
-
 
 /* Animación */
 body.is-ready .work-card.animate-in {
