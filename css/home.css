@@ -43,6 +43,7 @@ html {
     .work-grid {
         padding-top: 0;
         margin-bottom: auto;
+        row-gap:calc(var(--grid-gap-y) / 1.25) ;
     }
 
     /* Animación de padding-top cuando is-ready */
@@ -191,3 +192,9 @@ body.is-ready .work-card.animate-delay-3 {
     pointer-events: none;
     z-index: 9;
 }
+
+/* @media (max-width: 768px) {
+    .work-card__title br {
+        display: none !important;
+    }
+} */
