@@ -23,13 +23,50 @@ html {
     /* Sin padding, el grid maneja su propio espaciado */
 }
 
+/* MOBILE: Altura total de página definida */
+@media (max-width: 768px) {
+    .page--home .site-main {
+        min-height: 1400px;
+    }
+}
+
 /* Grid simple y libre */
 .work-grid {
     display: grid;
     grid-template-columns: repeat(var(--work-cols), 1fr);
     column-gap: var(--grid-gap-x);
     row-gap: var(--grid-gap-y);
-    transition: padding-top 400ms ease;
+}
+
+/* MOBILE: Padding-top fijo + espacio sobrante abajo */
+@media (max-width: 768px) {
+    .work-grid {
+        padding-top: 0;
+        margin-bottom: auto;
+    }
+
+    /* Animación de padding-top cuando is-ready */
+    body.is-ready .work-grid {
+        animation: gridPaddingGrow 4000ms ease forwards;
+    }
+}
+
+/* DESKTOP: Mantener transición para cálculo dinámico */
+@media (min-width: 769px) {
+    .work-grid {
+        transition: padding-top 400ms ease;
+    }
+}
+
+/* Animación de padding-top en mobile */
+@keyframes gridPaddingGrow {
+    from {
+        padding-top: 0;
+    }
+
+    to {
+        padding-top: 300px;
+    }
 }
 
 /* Solo las cards marcadas tienen scroll snap */
@@ -44,18 +81,24 @@ html {
 
 /* ========== ANIMACIONES DE ENTRADA ========== */
 
-/* Estado inicial: invisibles y desplazadas hacia arriba */
+/* Estado inicial: invisibles */
 .work-card.animate-in {
     opacity: 0;
+}
+
+
+
+.work-card.animate-in {
     transform: translateY(-200px);
 }
 
-/* Animación: fade in + desplazamiento hacia abajo */
+
+/* Animación */
 body.is-ready .work-card.animate-in {
     animation: cardFadeIn 4000ms ease forwards;
 }
 
-/* Delays en cascada (card 1 es la última en terminar) */
+/* Delays en cascada */
 body.is-ready .work-card.animate-delay-1 {
     animation-delay: 0ms;
 }
@@ -68,6 +111,7 @@ body.is-ready .work-card.animate-delay-3 {
     animation-delay: 300ms;
 }
 
+/* Keyframes: desktop tiene translateY, mobile solo opacity */
 @keyframes cardFadeIn {
     to {
         opacity: 1;
@@ -75,7 +119,7 @@ body.is-ready .work-card.animate-delay-3 {
     }
 }
 
-/* Accesibilidad: desactivar animaciones si el usuario lo prefiere */
+/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
     .work-card.animate-in {
         opacity: 1;
@@ -131,44 +175,19 @@ body.is-ready .work-card.animate-delay-3 {
     object-fit: cover;
 }
 
-/* ========== INTRO ANIMATION: primera fila ========== */
-
-/* Estado inicial */
-.work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-    opacity: 0;
-    transform: translateY(-300px);
+/* ========== FADE OUT SUPERIOR ========== */
+.page--home .site-main {
+    position: relative;
 }
 
-/* Disparo */
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-    animation: workCardIn 3000ms ease forwards;
-}
-
-/* Stagger */
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(1) {
-    animation-delay: 400ms;
-}
-
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(2) {
-    animation-delay: 200ms;
-}
-
-body.is-ready .work-step__row:first-of-type>.work-card:nth-child(3) {
-    animation-delay: 0ms;
-}
-
-@keyframes workCardIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    .work-step__row:first-of-type>.work-card:nth-child(-n + 3) {
-        opacity: 1;
-        transform: none;
-        animation: none;
-    }
+.page--home .site-main::before {
+    content: '';
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 9;
 }

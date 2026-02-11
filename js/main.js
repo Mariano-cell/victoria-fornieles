@@ -97,7 +97,7 @@
 })();
 
 // ==============================
-// AJUSTAR PADDING-TOP DEL GRID + SCROLL SNAP SELECTIVO (solo home)
+// SCROLL SNAP SELECTIVO (solo home)
 // ==============================
 (() => {
   // Solo correr en la home
@@ -109,46 +109,33 @@
   // ⭐ FIX SAFARI: Desactivar scroll snap hasta que todo esté listo
   document.documentElement.style.scrollSnapType = "none";
 
-  // ⭐ FIX MOBILE: Cachear el padding calculado para evitar espasmos por la barra de Safari
-  let cachedMobilePadding = null;
-
   const adjustGridPadding = () => {
     const card = document.querySelector(".work-card");
     if (!card || !grid) return;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    // ⭐ Si es mobile y ya calculamos el padding, usar el valor cacheado
-    if (isMobile && cachedMobilePadding !== null) {
-      grid.style.paddingTop = cachedMobilePadding;
-      return;
+    // ⭐ SOLO EN DESKTOP: calcular padding-top dinámicamente
+    if (!isMobile) {
+      const cardHeight = card.offsetHeight;
+      const headerHeight = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-h")
+      );
+      const gridGapY = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--grid-gap-y")
+      );
+
+      const rowsToShow = 1;
+      const totalContentHeight = cardHeight * rowsToShow;
+
+      const paddingTop = Math.max(
+        0,
+        window.innerHeight - headerHeight - totalContentHeight
+      );
+
+      grid.style.paddingTop = `${paddingTop}px`;
     }
-
-    const cardHeight = card.offsetHeight;
-    const headerHeight = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue("--header-h")
-    );
-    const gridGapY = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue("--grid-gap-y")
-    );
-
-    // Detectar si estamos en mobile (2 filas) o desktop (1 fila)
-    const rowsToShow = isMobile ? 2 : 1;
-
-    // Altura total: (card × filas) + (gap × espacios entre filas)
-    const totalContentHeight = (cardHeight * rowsToShow) + (gridGapY * (rowsToShow - 1));
-
-    const paddingTop = Math.max(
-      0,
-      window.innerHeight - headerHeight - totalContentHeight
-    );
-
-    grid.style.paddingTop = `${paddingTop}px`;
-
-    // ⭐ Guardar el valor cacheado en mobile
-    if (isMobile) {
-      cachedMobilePadding = `${paddingTop}px`;
-    }
+    // En mobile, el padding-top lo maneja CSS con animación (no tocar)
   };
 
   const assignScrollSnapPoints = () => {
@@ -160,8 +147,6 @@
 
     if (isMobile) {
       // Mobile: snap en cards 4, 6, 8, 10... (índices 3, 5, 7, 9...)
-      // Primera fila inferior = card 4 (índice 3)
-      // Luego cada 2 cards (una fila completa en grid de 2 cols)
       cards.forEach((card, index) => {
         if (index === 3 || (index > 3 && (index - 3) % 2 === 0)) {
           card.classList.add("snap-point");
@@ -169,7 +154,6 @@
       });
     } else {
       // Desktop: snap en cards 1, 4, 7, 10... (índices 0, 3, 6, 9...)
-      // Cada 3 cards (una fila completa en grid de 3 cols)
       cards.forEach((card, index) => {
         if (index % 3 === 0) {
           card.classList.add("snap-point");
@@ -186,27 +170,22 @@
   // Guardar el breakpoint anterior para detectar cambios
   let wasMobile = window.matchMedia("(max-width: 768px)").matches;
 
-  // Ejecutar inmediatamente al cargar (antes de animaciones)
-  // DOMContentLoaded se dispara antes que 'load' y antes de is-ready
+  // Ejecutar inmediatamente al cargar
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", rebuild);
   } else {
-    rebuild(); // Ya está listo
+    rebuild();
   }
 
-  // ⭐ FIX SAFARI: Esperar a que las imágenes carguen Y las animaciones terminen
+  // ⭐ Esperar a que las imágenes carguen y las animaciones terminen
   window.addEventListener("load", () => {
     rebuild();
 
     // Forzar scroll al top (Safari a veces "recuerda" posiciones)
     window.scrollTo(0, 0);
 
-    // Esperar a que las animaciones CSS terminen (4000ms según tu CSS)
     setTimeout(() => {
-      // Recalcular una vez más por si las animaciones cambiaron algo
       rebuild();
-
-      // Reactivar scroll snap DESPUÉS de todo
       requestAnimationFrame(() => {
         document.documentElement.style.scrollSnapType = "y mandatory";
       });
@@ -222,21 +201,16 @@
 
       // Detectar si hubo cambio de breakpoint
       if (isMobile !== wasMobile) {
-        // ⭐ Limpiar cache al cambiar de breakpoint
-        cachedMobilePadding = null;
-
         // Desactivar scroll snap temporalmente
         document.documentElement.style.scrollSnapType = "none";
 
         rebuild();
 
-        // Esperar a que las imágenes se ajusten al nuevo ancho
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            // Recalcular después de que el grid se haya redimensionado
             rebuild();
 
-            // Si estamos arriba de todo (viewport inicial), quedarse arriba
+            // Si estamos arriba de todo, quedarse arriba
             if (window.scrollY < window.innerHeight) {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
