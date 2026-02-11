@@ -50,6 +50,7 @@ html {
     body.is-ready .work-grid {
         animation: gridPaddingGrow 4000ms ease forwards;
     }
+
 }
 
 /* DESKTOP: Mantener transición para cálculo dinámico */
@@ -62,11 +63,11 @@ html {
 /* Animación de padding-top en mobile */
 @keyframes gridPaddingGrow {
     from {
-        padding-top: 275px;
+        padding-top: 300px;
     }
 
     to {
-        padding-top: 300px;
+        padding-top: 320px;
     }
 }
 
@@ -83,15 +84,25 @@ html {
 /* ========== ANIMACIONES DE ENTRADA ========== */
 
 /* Estado inicial: invisibles */
+/* Estado inicial: invisibles */
 .work-card.animate-in {
     opacity: 0;
 }
 
-
-
-.work-card.animate-in {
-    transform: translateY(-200px);
+/* MOBILE: desplazamiento Y sutil */
+@media (max-width: 768px) {
+    .work-card.animate-in {
+        transform: translateY(-80px);
+    }
 }
+
+/* DESKTOP: desplazamiento Y pronunciado */
+@media (min-width: 769px) {
+    .work-card.animate-in {
+        transform: translateY(-200px);
+    }
+}
+
 
 
 /* Animación */
