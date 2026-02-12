@@ -1,27 +1,36 @@
 // ==============================
-// PAGE LOADER — ENTRADA
+// PAGE LOADER — SOLO HOME
 // ==============================
-// HOME primera visita     → loader hasta window.load
-// HOME desde cache        → sin loader, is-ready inmediato
-// PROYECTO primera visita → loader hasta que carga la imagen principal
-// PROYECTO desde cache    → sin loader, is-ready inmediato
+// HOME primera visita  → loader hasta window.load
+// HOME desde cache     → sin loader, is-ready inmediato
+// Cualquier otra página → is-ready inmediato, sin loader
 
 (() => {
-    const isHome    = document.body.classList.contains("page--home");
-    const isProject = document.body.classList.contains("page--project");
+    const isHome = document.body.classList.contains("page--home");
+
+    // Si no es home, marcar ready y salir
+    if (!isHome) {
+        document.body.classList.add("is-ready");
+        return;
+    }
 
     // ── CACHE ────────────────────────────────────────────────────────
-    const pageKey        = "visited:" + window.location.pathname;
+    const pageKey = "visited:home";
     const alreadyVisited = sessionStorage.getItem(pageKey) === "1";
     sessionStorage.setItem(pageKey, "1");
 
-    // ── HELPERS ──────────────────────────────────────────────────────
-    const hideLoader = () => {
+    if (alreadyVisited) {
         const loader = document.querySelector(".page-loader");
-        if (!loader) {
-            document.body.classList.add("is-ready");
-            return;
-        }
+        if (loader) loader.remove();
+        document.body.classList.add("is-ready");
+        return;
+    }
+
+    // ── PRIMERA VISITA AL HOME ───────────────────────────────────────
+    const loader = document.querySelector(".page-loader");
+
+    const hideLoader = () => {
+        if (!loader) { document.body.classList.add("is-ready"); return; }
         loader.classList.add("is-hidden");
         setTimeout(() => {
             loader.remove();
@@ -29,54 +38,13 @@
         }, 300);
     };
 
-    const skipLoader = () => {
-        const loader = document.querySelector(".page-loader");
-        if (loader) loader.remove();
-        document.body.classList.add("is-ready");
-    };
-
-    // ── TIMEOUT DE SEGURIDAD ─────────────────────────────────────────
     const safetyTimeout = setTimeout(hideLoader, 10000);
+    const done = () => { clearTimeout(safetyTimeout); hideLoader(); };
 
-    const done = () => {
-        clearTimeout(safetyTimeout);
-        hideLoader();
-    };
-
-    // ── LÓGICA ───────────────────────────────────────────────────────
-
-    if (alreadyVisited) {
-        skipLoader();
-        return;
+    if (document.readyState === "complete") {
+        done();
+    } else {
+        window.addEventListener("load", done, { once: true });
     }
-
-    if (isHome) {
-        window.addEventListener("load", () => setTimeout(done, 100));
-        return;
-    }
-
-    if (isProject) {
-        // project-gallery.js corre después de este script y reemplaza img.src.
-        // Esperamos DOMContentLoaded + un tick para leer el src real.
-        const waitForImage = () => {
-            setTimeout(() => {
-                const img = document.querySelector(".project-img");
-                if (!img || !img.src) { done(); return; }
-                if (img.complete && img.naturalWidth > 0) { done(); return; }
-                img.addEventListener("load",  done, { once: true });
-                img.addEventListener("error", done, { once: true });
-            }, 0);
-        };
-
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", waitForImage);
-        } else {
-            waitForImage();
-        }
-        return;
-    }
-
-    // Fallback
-    window.addEventListener("load", () => setTimeout(done, 100));
 
 })();

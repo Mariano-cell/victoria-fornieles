@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CORA — Victoria F.</title>
+    <title>CORA – Victoria F.</title>
 
     <link rel="icon" href="../assets/logo/favicon-v2.png" type="image/png">
 
+    <link rel="stylesheet" href="../css/loader.css" />
     <link rel="stylesheet" href="../css/tokens.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/project.css" />
 
-    <meta name="description" content="Proyecto CORA — Portfolio de Victoria Fornieles." />
+    <meta name="description" content="Proyecto CORA – Portfolio de Victoria Fornieles." />
 </head>
 
 <body class="page page--project">
@@ -27,9 +28,7 @@
                     </span>
                 </a>
             </div>
-
         </div>
-
     </header>
 
     <main class="site-main" aria-label="Contenido principal">
@@ -37,10 +36,8 @@
 
             <div class="project-viewer" data-project="cora">
 
-                <!-- Título móvil: encima del carrusel, oculto en desktop -->
                 <h1 class="project-title project-title--mobile">03 /<br>CORA</h1>
 
-                <!-- Fila: botón prev + stage + botón next -->
                 <div class="project-viewer__track">
 
                     <button class="project-nav project-nav--prev" type="button" aria-label="Foto anterior">
@@ -50,7 +47,6 @@
                     </button>
 
                     <div class="project-stage">
-                        <!-- project-title y project-category: solo visibles en desktop -->
                         <h1 class="project-title">03 /<br>CORA</h1>
 
                         <figure class="project-figure">
@@ -71,7 +67,6 @@
 
                 </div>
 
-                <!-- Category móvil: debajo del carrusel, oculta en desktop -->
                 <span class="project-category project-category--mobile"></span>
 
             </div>
@@ -86,118 +81,48 @@
 
 
 
-    <!-- 
-  DIAGNÓSTICO CORA.HTML
-  Pegá este bloque completo justo antes del </body> en cora.html,
-  reemplazando el snippet anterior.
-  Abrí DevTools > Console, recargá la página y pegá los logs acá.
--->
     <script>
         (() => {
             const t0 = performance.now();
-            const logs = [];
-            const log = (label) => {
-                const ms = Math.round(performance.now() - t0);
-                logs.push(`[${ms}ms] ${label}`);
-                console.log(`[${ms}ms] ${label}`);
-            };
+            const log = (label) => console.log(`[${Math.round(performance.now() - t0)}ms] ${label}`);
 
-            log("▶ script diagnóstico corre");
-
-            // ── EVENTOS GLOBALES ─────────────────────────────────────
+            log("script corre");
             document.addEventListener("DOMContentLoaded", () => log("DOMContentLoaded"));
             window.addEventListener("load", () => log("window.load"));
 
-            // ── IMAGEN PRINCIPAL ─────────────────────────────────────
-            const img = document.querySelector(".project-img");
-            if (img) {
-                log(`img encontrada | complete=${img.complete} | naturalWidth=${img.naturalWidth} | src=${img.src.split("/").pop()}`);
-                if (!img.complete) {
-                    img.addEventListener("load", () => log("✅ img.load"));
-                    img.addEventListener("error", () => log("❌ img.error"));
-                }
-            } else {
-                log("⚠️ .project-img NO encontrada");
-            }
+            // Clases del body
+            new MutationObserver(() => {
+                log(`body.class → "${document.body.className}"`);
+            }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
-            // ── LOADER EN DOM ────────────────────────────────────────
+            // Loader: aparece, recibe is-hidden, se elimina
             const loaderObserver = new MutationObserver(() => {
                 const loader = document.querySelector(".page-loader");
-                if (loader) {
-                    log("loader inyectado en DOM");
-                    loaderObserver.disconnect();
+                if (!loader) return;
+                log("loader en DOM");
+                loaderObserver.disconnect();
 
-                    // Detectar cuando se le agrega is-hidden
-                    const hiddenObserver = new MutationObserver(() => {
-                        if (loader.classList.contains("is-hidden")) {
-                            log("loader.is-hidden agregado → empieza fade-out");
-                            hiddenObserver.disconnect();
-                        }
-                    });
-                    hiddenObserver.observe(loader, { attributes: true, attributeFilter: ["class"] });
+                new MutationObserver(() => {
+                    if (loader.classList.contains("is-hidden")) log("loader.is-hidden → fade-out empieza");
+                }).observe(loader, { attributes: true, attributeFilter: ["class"] });
 
-                    // Detectar cuando se remueve del DOM
-                    const removeObserver = new MutationObserver(() => {
-                        if (!document.querySelector(".page-loader")) {
-                            log("loader removido del DOM");
-                            removeObserver.disconnect();
-                        }
-                    });
-                    removeObserver.observe(document.body, { childList: true, subtree: true });
-                }
+                new MutationObserver(() => {
+                    if (!document.querySelector(".page-loader")) log("✅ loader removido");
+                }).observe(document.body, { childList: true, subtree: true });
             });
             loaderObserver.observe(document.body, { childList: true, subtree: true });
 
-            // ── CLASES DEL BODY ──────────────────────────────────────
-            const bodyObserver = new MutationObserver(() => {
-                const classes = document.body.className;
-                log(`body.class cambió → "${classes}"`);
-                if (classes.includes("is-ready")) {
-                    log("✅ is-ready agregado");
-                }
-            });
-            bodyObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+            // Links CSS que se cargan dinámicamente
+            new MutationObserver((mutations) => {
+                mutations.forEach(m => m.addedNodes.forEach(n => {
+                    if (n.tagName === "LINK") log(`<link> inyectado: ${n.href.split("/").pop()}`);
+                    if (n.tagName === "SCRIPT") log(`<script> inyectado: ${n.src.split("/").pop()}`);
+                }));
+            }).observe(document.head, { childList: true });
 
-            // ── SCRIPTS QUE CARGAN ───────────────────────────────────
-            // Detectar cuándo termina de parsear cada script
-            ["loader.js", "project-loader.js", "main.js", "project-gallery.js"].forEach(name => {
-                const scripts = Array.from(document.querySelectorAll("script"));
-                const s = scripts.find(el => el.src && el.src.includes(name));
-                if (s) {
-                    log(`script encontrado en DOM: ${name}`);
-                } else {
-                    log(`⚠️ script NO encontrado: ${name}`);
-                }
-            });
-
-            // ── VISIBILIDAD REAL DEL CONTENIDO ───────────────────────
-            // Qué tan pronto el .project-stage es visible para el usuario
-            const checkVisible = () => {
-                const stage = document.querySelector(".project-stage");
-                if (!stage) return;
-                const style = window.getComputedStyle(stage);
-                log(`project-stage | opacity=${style.opacity} | visibility=${style.visibility} | display=${style.display}`);
-            };
-
-            // Chequear visibilidad en distintos momentos
-            [0, 100, 300, 500, 800, 1000, 1500, 2000, 3000].forEach(delay => {
-                setTimeout(() => {
-                    const stage = document.querySelector(".project-stage");
-                    if (!stage) return;
-                    const style = window.getComputedStyle(stage);
-                    const loaderStillHere = !!document.querySelector(".page-loader");
-                    log(`@${delay}ms → stage opacity=${style.opacity} | loader=${loaderStillHere ? "presente" : "removido"}`);
-                }, delay);
-            });
-
-            // ── RESUMEN FINAL ────────────────────────────────────────
-            setTimeout(() => {
-                console.log("\n═══ RESUMEN DIAGNÓSTICO ═══");
-                logs.forEach(l => console.log(l));
-                console.log("═══════════════════════════\n");
-            }, 3500);
         })();
     </script>
+
 </body>
 
 </html>
