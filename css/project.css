@@ -39,6 +39,7 @@
 
 /* Bloques flechas */
 .project-nav--prev {
+    grid-column: 1;
     justify-self: start;
 }
 
@@ -80,18 +81,16 @@
 
 /* Bloque 2: columna central fija (no se achica por la imagen) */
 .project-stage {
+
+
     grid-column: 2;
-
-    width: fit-content;
-    /* clave */
-    max-width: 100%;
-    /* para que no se salga en pantallas chicas */
-    margin-inline: auto;
-    /* clave: lo centra dentro del 1fr */
-
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 14px;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
 }
 
 .project-title {
@@ -224,7 +223,8 @@
     /* El stage es el track horizontal deslizable */
     .project-stage {
         display: flex;
-        flex-direction: row;      /* fotos en fila horizontal */
+        flex-direction: row;
+        /* fotos en fila horizontal */
         width: 100%;
         gap: 0;
 
@@ -271,7 +271,8 @@
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
-        transition: none;         /* sin fade en mobile, el scroll es la transición */
+        transition: none;
+        /* sin fade en mobile, el scroll es la transición */
     }
 
     /* Botones: overlays invisibles sobre el stage, para tap izq/der */
@@ -290,7 +291,7 @@
         -webkit-appearance: none;
         appearance: none;
         outline: none;
-    
+
         box-shadow: none;
         border-radius: 0;
     }
@@ -326,4 +327,8 @@
         visibility: hidden;
         pointer-events: none;
     }
+}
+
+.project-viewer__track {
+    display: contents;
 }
