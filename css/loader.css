@@ -17,7 +17,7 @@
 
     /* Transición para cuando desaparezca */
     opacity: 1;
-    transition: opacity 800ms ease;
+    transition: opacity 300ms ease;
 }
 
 .page-loader.is-hidden {
@@ -47,9 +47,33 @@
     }
 }
 
+/* ── LOADER DE SALIDA (home → proyecto) ──
+   Aparece instantáneamente al clickear,
+   sin animación de logo, solo fondo blanco limpio */
+.page-loader--exit {
+    opacity: 0;
+    animation: exitFadeIn 120ms ease forwards;
+}
+
+.page-loader--exit .page-loader__image {
+    animation: none;
+    opacity: 0.4;
+}
+
+@keyframes exitFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
 /* Accesibilidad: desactivar animación si el usuario lo prefiere */
 @media (prefers-reduced-motion: reduce) {
     .page-loader__image {
+        animation: none;
+        opacity: 1;
+    }
+
+    .page-loader--exit {
         animation: none;
         opacity: 1;
     }

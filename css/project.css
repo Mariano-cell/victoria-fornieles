@@ -160,6 +160,11 @@
     opacity: 1;
 }
 
+/* Track invisible para el grid en desktop: sus hijos participan directamente */
+.project-viewer__track {
+    display: contents;
+}
+
 /* ========== PROJECT: RESPONSIVE MOBILE ========== */
 
 @media (max-width: 768px) {
@@ -229,7 +234,6 @@
         gap: 0;
 
         overflow-x: scroll;
-        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
 
         /* ocultar scrollbar */
@@ -241,13 +245,11 @@
         display: none;
     }
 
-    /* Cada slide: 90vw → espacio visual entre fotos al arrastrar */
     .project-figure {
         flex: 0 0 100vw;
-        width: 90vw;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
+        width: 100vw;
         margin: 0;
+        box-sizing: border-box;
 
         display: flex;
         align-items: center;
@@ -327,8 +329,4 @@
         visibility: hidden;
         pointer-events: none;
     }
-}
-
-.project-viewer__track {
-    display: contents;
 }
