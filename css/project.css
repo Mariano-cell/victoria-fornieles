@@ -133,7 +133,7 @@
     width: auto;
 
     /* Fade entre fotos */
-    transition: opacity 20ms ease;
+    transition: opacity 100ms ease;
 }
 
 .project-caption {
@@ -150,6 +150,12 @@
     letter-spacing: 0;
 }
 
+/* Elementos móviles: ocultos por defecto (desktop) */
+.project-title--mobile,
+.project-category--mobile {
+    display: none;
+}
+
 /* Logo visible en proyectos */
 .page--project .brand__live {
     opacity: 1;
@@ -159,52 +165,104 @@
 
 @media (max-width: 768px) {
 
+    /* Página ocupa el viewport menos el header */
     .page--project .site-main {
-        height: calc(100vh - var(--header-h));
+        /* height: calc(100vh - var(--header-h)); */
+        height: auto;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        padding: 0;
-        padding-inline: var(--container-pad);
+        padding-top: 90px;
+        padding-inline: 0;
     }
 
     .page--project .project {
         padding-top: 0;
         width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* El viewer se centra verticalmente */
-    .project-viewer {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* El stage tiene altura auto y se centra */
-    .project-stage {
-        position: relative;
-        display: flex;
         flex-direction: column;
-        width: 100%;
+        align-items: center;
+        justify-content: center;
         gap: 14px;
     }
 
-    /* Título no crece */
-    .project-title {
-        flex-shrink: 0;
+    /* Ocultar title y category originales (viven dentro del stage/track) */
+    .project-stage .project-title,
+    .project-stage .project-category {
+        display: none;
     }
 
-    /* La imagen mantiene su altura fija de 400px */
+    /* Mostrar los elementos móviles externos */
+    .project-title--mobile,
+    .project-category--mobile {
+        display: block;
+        padding-inline: var(--container-pad);
+        width: 100%;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        font-size: 15px;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    /* El viewer es columna: título / carrusel+botones / category */
+    .project-viewer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    /* Fila interna: botón prev + stage + botón next */
+    .project-viewer__track {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* El stage es el track horizontal deslizable */
+    .project-stage {
+        display: flex;
+        flex-direction: row;      /* fotos en fila horizontal */
+        width: 100%;
+        gap: 0;
+
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+
+        /* ocultar scrollbar */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .project-stage::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Cada slide: 90vw → espacio visual entre fotos al arrastrar */
+    .project-figure {
+        flex: 0 0 100vw;
+        width: 90vw;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        margin: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-inline: var(--container-pad);
+    }
+
+    /* Contenedor de imagen ocupa todo el slide */
     .project-media {
+        width: 100%;
         height: 400px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
     }
 
     .project-img {
@@ -213,15 +271,10 @@
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
+        transition: none;         /* sin fade en mobile, el scroll es la transición */
     }
 
-    /* El category SIEMPRE visible */
-    .project-category {
-        margin-top: 8px;
-        flex-shrink: 0;
-    }
-
-    /* botones como overlays invisibles */
+    /* Botones: overlays invisibles sobre el stage, para tap izq/der */
     .project-nav {
         position: absolute;
         top: 0;
@@ -233,8 +286,13 @@
         border: 0;
         opacity: 0;
         cursor: pointer;
-        display: block;
         z-index: 5;
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
+    
+        box-shadow: none;
+        border-radius: 0;
     }
 
     .project-nav--prev {
@@ -245,47 +303,27 @@
         right: 0;
     }
 
-    .project-media {
-        z-index: 1;
-    }
-
-    .project-nav:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, .55);
-        outline-offset: -2px;
-        opacity: 1;
-    }
-
-    .project-nav:active {
-        opacity: 0;
-        background: transparent;
-    }
-
     .project-nav__icon {
         display: none;
     }
 
-    /* iOS Safari: eliminar highlight gris al tap */
+    /* iOS Safari: sin highlight gris al tap */
     .project-nav,
     .project-nav * {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-touch-callout: none;
     }
 
-    /* iOS Safari: sacar "appearance" de botón (a veces genera sombreado) */
-    .project-nav {
-        -webkit-appearance: none;
-        appearance: none;
-        outline: none;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    /* Evitar que el tap deje focus visible/gris */
     .project-nav:focus {
         outline: none;
     }
 
     .project-nav:focus:not(:focus-visible) {
         outline: none;
+    }
+
+    .project-nav:disabled {
+        visibility: hidden;
+        pointer-events: none;
     }
 }

@@ -2,18 +2,15 @@
     const viewer = document.querySelector(".project-viewer[data-project]");
     if (!viewer) return;
 
-    const projectKey = viewer.dataset.project; // ej: "bambu", "tomo", etc.
+    const projectKey = viewer.dataset.project;
 
     const btnPrev = viewer.querySelector(".project-nav--prev");
     const btnNext = viewer.querySelector(".project-nav--next");
-    const img = viewer.querySelector(".project-img");
 
-    // opcionales (dependen del HTML de cada proyecto)
-    const caption = viewer.querySelector(".project-caption");
-    const category = viewer.querySelector(".project-category");
-
-    // 1) Catálogo central de slides por proyecto
-    //    (vos acá solo agregás arrays; no tocás más lógica)
+    // ==============================
+    // CATÁLOGO DE SLIDES
+    // (solo editás estos arrays, no tocás más lógica)
+    // ==============================
     const PROJECT_SLIDES = {
         bambu: [
             { src: "../assets/img/projects/bambu/poster-x3.jpg", category: "BRANDING", caption: "", alt: "" },
@@ -36,14 +33,12 @@
             { src: "../assets/img/projects/tomo/frame-45.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/frame-57.png", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/tomo/a4-13.jpg", category: "BRANDING", caption: "", alt: "" },
-
         ],
 
         diagonal: [
             { src: "../assets/img/projects/diagonal/bag-hanging.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/diagonal/free-rectangle-sign.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/diagonal/paper-bag-mockup.jpg", category: "BRANDING", caption: "", alt: "" },
-
             { src: "../assets/img/projects/diagonal/pd03.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/diagonal/pd05.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/diagonal/pd07.jpg", category: "BRANDING", caption: "", alt: "" },
@@ -92,7 +87,6 @@
             { src: "../assets/img/projects/cora/sin-titulo-02.jpg", category: "DISEÑO Y FOTOGRAFÍA", alt: "" }
         ],
 
-        // proyecto 05 / FOTOS
         analogicas: [
             { src: "../assets/img/projects/analogicas/6.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/11.jpg", category: "", caption: "", alt: "" },
@@ -102,7 +96,6 @@
             { src: "../assets/img/projects/analogicas/2341-aa009.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/2341-aa034.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/2341-aa035.jpg", category: "", caption: "", alt: "" },
-
             { src: "../assets/img/projects/analogicas/000003640034.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/000011900015.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/000012640001.jpg", category: "", caption: "", alt: "" },
@@ -116,7 +109,6 @@
             { src: "../assets/img/projects/analogicas/000012650013.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/000012650031.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/000012650032.jpg", category: "", caption: "", alt: "" },
-
             { src: "../assets/img/projects/analogicas/fotos-viaje-01.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/fotos-viaje-02.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/fotos-viaje-03.jpg", category: "", caption: "", alt: "" },
@@ -124,32 +116,19 @@
             { src: "../assets/img/projects/analogicas/fotos-viaje-07.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/fotos-viaje-23.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/fotos-viaje-24.jpg", category: "", caption: "", alt: "" },
-
             { src: "../assets/img/projects/analogicas/vicky-fornieles1.jpg", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/vicky-fornieles2.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/analogicas/vickyfornieles7.jpg", category: "", caption: "", alt: "" }
         ],
 
-        linea22: [
-            { src: "../assets/img/projects/linea-22/01.png", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/02.png", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/03.png", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/04.png", category: "", caption: "", alt: "" },
-
-            { src: "../assets/img/projects/linea-22/05.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/06.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/07.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/08.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/09.jpg", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/linea-22/10.jpg", category: "", caption: "", alt: "" }
+        "linea-22": [
+            { src: "../assets/img/projects/linea-22/07.jpg", category: "BRANDING", caption: "", alt: "" },
         ],
 
         vermuteo: [
-            { src: "../assets/img/projects/vermuteo/01.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/02.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/03.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/04.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-
+            { src: "../assets/img/projects/vermuteo/01.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/02.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/03.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/04.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/05.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/06.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/07.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
@@ -158,7 +137,6 @@
         ],
 
         "artes-tapa": [
-            // Ahora cada slide puede tener "category"
             { src: "../assets/img/projects/artes-de-tapa/10.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/07.jpg", category: "DREIMONDS", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/01.jpg", category: "PARAISO", caption: "", alt: "" },
@@ -168,7 +146,6 @@
             { src: "../assets/img/projects/artes-de-tapa/04.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/03.jpg", category: "PARAISO", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/06.jpg", category: "MAGNESIO 1864", caption: "", alt: "" },
-
             { src: "../assets/img/projects/artes-de-tapa/09.jpg", category: "MAGNESIO 1864", caption: "", alt: "" }
         ],
 
@@ -183,7 +160,6 @@
             { src: "../assets/img/projects/escaneos/08.JPG", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/escaneos/09.JPG", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/escaneos/10.JPG", category: "", caption: "", alt: "" },
-
             { src: "../assets/img/projects/escaneos/11.JPG", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/escaneos/12.JPG", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/escaneos/13.JPG", category: "", caption: "", alt: "" },
@@ -206,39 +182,107 @@
         ],
     };
 
+    // ==============================
+    // SETUP
+    // ==============================
     const slides = PROJECT_SLIDES[projectKey];
 
-    // Si te olvidás de cargar el array, fallá “bien” (sin romper la página)
     if (!Array.isArray(slides) || slides.length === 0) {
         btnPrev.disabled = true;
         btnNext.disabled = true;
-        if (caption) caption.textContent = "";
-        if (category) category.textContent = "";
         return;
     }
 
+    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+    const stage = viewer.querySelector(".project-stage");
+    const track = viewer.querySelector(".project-viewer__track") || viewer;
+    const category = viewer.querySelector(".project-stage .project-category");
+    const categoryMobile = viewer.querySelector(".project-category--mobile");
+    const caption = viewer.querySelector(".project-caption");
+
     let index = 0;
 
-    const preload = (i) => {
-        if (i < 0 || i >= slides.length) return;
-        const im = new Image();
-        im.decoding = "async";
-        im.src = slides[i].src;
+    // ==============================
+    // PRELOAD: carga imágenes cercanas
+    // ==============================
+    const preloadAround = (centerIndex) => {
+        for (let i = centerIndex - 2; i <= centerIndex + 2; i++) {
+            if (i < 0 || i >= slides.length) continue;
+            const figure = stage.children[i];
+            if (!figure) continue;
+            const img = figure.querySelector(".project-img");
+            if (img && !img.src && img.dataset.src) {
+                img.src = img.dataset.src;
+                delete img.dataset.src;
+            }
+        }
     };
 
-    const render = () => {
-        const s = slides[index];
-
+    // ==============================
+    // UPDATE UI: botones y textos
+    // ==============================
+    const updateUI = () => {
         btnPrev.disabled = index === 0;
         btnNext.disabled = index === slides.length - 1;
+        const cat = slides[index].category || "";
+        if (category) category.textContent = cat;
+        if (categoryMobile) categoryMobile.textContent = cat;
+        if (caption) caption.textContent = slides[index].caption || "";
+    };
 
-        // Precargar 2 fotos adelante y 2 atrás
-        preload(index - 2);
-        preload(index - 1);
-        preload(index + 1);
-        preload(index + 2);
+    // ==============================
+    // MOBILE: construir carrusel con un <figure> por slide
+    // ==============================
+    const buildCarousel = () => {
+        stage.innerHTML = "";
 
-        // Fade: fade out → esperar → cambiar src → fade in
+        slides.forEach((s, i) => {
+            const figure = document.createElement("figure");
+            figure.className = "project-figure";
+
+            const media = document.createElement("div");
+            media.className = "project-media";
+
+            const img = document.createElement("img");
+            img.className = "project-img";
+            img.alt = s.alt || "";
+            img.decoding = "async";
+
+            // Solo la primera imagen carga de entrada, el resto es lazy
+            if (i === 0) {
+                img.src = s.src;
+                img.style.opacity = "1";
+            } else {
+                img.dataset.src = s.src;
+                img.style.opacity = "0"; // fade in al entrar al viewport
+            }
+
+            media.appendChild(img);
+            figure.appendChild(media);
+            stage.appendChild(figure);
+        });
+    };
+
+    // ==============================
+    // MOBILE: scroll programático al slide
+    // ==============================
+    const scrollToIndex = (i) => {
+        const figure = stage.children[i];
+        if (!figure) return;
+        stage.scrollTo({ left: figure.offsetLeft, behavior: "smooth" });
+    };
+
+    // ==============================
+    // DESKTOP: fade entre fotos (un solo <img> en el DOM)
+    // ==============================
+    const renderDesktop = () => {
+        const s = slides[index];
+        const img = stage.querySelector(".project-img");
+        if (!img) return;
+
+        preloadAround(index);
+        updateUI();
+
         img.style.opacity = "0";
 
         const newImg = new Image();
@@ -247,42 +291,82 @@
         const swap = () => {
             img.src = s.src;
             img.alt = s.alt || "";
-            if (caption) caption.textContent = s.caption || "";
-            if (category) category.textContent = s.category || "";
             img.style.opacity = "1";
         };
 
         if (newImg.complete) {
-            // Ya estaba en caché: swap casi inmediato
             setTimeout(swap, 80);
         } else {
-            // Esperar a que cargue, con un timeout de seguridad de 1500ms
             const timeout = setTimeout(swap, 1500);
-            newImg.onload = () => {
-                clearTimeout(timeout);
-                swap();
-            };
+            newImg.onload = () => { clearTimeout(timeout); swap(); };
         }
     };
 
+    // ==============================
+    // INIT
+    // ==============================
+    if (isMobile()) {
+        buildCarousel();
+        preloadAround(0);
+        updateUI();
+
+        // Actualizar index y UI al scrollear
+        stage.addEventListener("scroll", () => {
+            const slideWidth = stage.offsetWidth;
+            const newIndex = Math.round(stage.scrollLeft / slideWidth);
+            if (newIndex !== index) {
+                index = newIndex;
+                preloadAround(index);
+                updateUI();
+
+                // Fade in de la imagen entrante
+                const enteringFigure = stage.children[index];
+                if (enteringFigure) {
+                    const enteringImg = enteringFigure.querySelector(".project-img");
+                    if (enteringImg) {
+                        enteringImg.style.opacity = "1";
+                    }
+                }
+            }
+        }, { passive: true });
+
+    } else {
+        // Desktop: usar el <img> que ya existe en el HTML
+        const img = stage.querySelector(".project-img");
+        if (img) img.src = slides[0].src;
+        preloadAround(0);
+        updateUI();
+    }
+
+    // ==============================
+    // BOTONES
+    // ==============================
     btnPrev.addEventListener("click", () => {
-        if (index > 0) {
-            index--;
-            render();
+        if (index <= 0) return;
+        index--;
+        if (isMobile()) {
+            scrollToIndex(index);
+        } else {
+            renderDesktop();
         }
     });
 
     btnNext.addEventListener("click", () => {
-        if (index < slides.length - 1) {
-            index++;
-            render();
+        if (index >= slides.length - 1) return;
+        index++;
+        if (isMobile()) {
+            scrollToIndex(index);
+        } else {
+            renderDesktop();
         }
     });
 
+    // ==============================
+    // TECLADO (desktop)
+    // ==============================
     window.addEventListener("keydown", (e) => {
         if (e.key === "ArrowLeft") btnPrev.click();
         if (e.key === "ArrowRight") btnNext.click();
     });
 
-    render();
 })();

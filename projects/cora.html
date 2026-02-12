@@ -37,30 +37,42 @@
 
             <div class="project-viewer" data-project="cora">
 
-                <button class="project-nav project-nav--prev" type="button" aria-label="Foto anterior">
-                    <span class="project-nav__icon" aria-hidden="true">
-                        <img src="../assets/img/ui/arrows/arrow-left.svg" alt="">
-                    </span>
-                </button>
+                <!-- Título móvil: encima del carrusel, oculto en desktop -->
+                <h1 class="project-title project-title--mobile">03 /<br>CORA</h1>
 
-                <div class="project-stage">
-                    <h1 class="project-title">03 /<br>CORA</h1>
+                <!-- Fila: botón prev + stage + botón next -->
+                <div class="project-viewer__track">
 
-                    <figure class="project-figure">
-                        <div class="project-media" aria-hidden="true">
-                            <img class="project-img" src="../assets/img/projects/bambu/poster-x3.jpg" alt=""
-                                decoding="async" fetchpriority="high" />
-                        </div>
-                    </figure>
+                    <button class="project-nav project-nav--prev" type="button" aria-label="Foto anterior">
+                        <span class="project-nav__icon" aria-hidden="true">
+                            <img src="../assets/img/ui/arrows/arrow-left.svg" alt="">
+                        </span>
+                    </button>
 
-                    <span class="project-category">DISEÑO</span>
+                    <div class="project-stage">
+                        <!-- project-title y project-category: solo visibles en desktop -->
+                        <h1 class="project-title">03 /<br>CORA</h1>
+
+                        <figure class="project-figure">
+                            <div class="project-media" aria-hidden="true">
+                                <img class="project-img" src="../assets/img/projects/bambu/poster-x3.jpg" alt=""
+                                    decoding="async" fetchpriority="high" />
+                            </div>
+                        </figure>
+
+                        <span class="project-category">DISEÑO</span>
+                    </div>
+
+                    <button class="project-nav project-nav--next" type="button" aria-label="Foto siguiente">
+                        <span class="project-nav__icon" aria-hidden="true">
+                            <img src="../assets/img/ui/arrows/arrow-right.svg" alt="">
+                        </span>
+                    </button>
+
                 </div>
 
-                <button class="project-nav project-nav--next" type="button" aria-label="Foto siguiente">
-                    <span class="project-nav__icon" aria-hidden="true">
-                        <img src="../assets/img/ui/arrows/arrow-right.svg" alt="">
-                    </span>
-                </button>
+                <!-- Category móvil: debajo del carrusel, oculta en desktop -->
+                <span class="project-category project-category--mobile"></span>
 
             </div>
         </section>

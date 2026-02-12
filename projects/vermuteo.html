@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VERMUTEO — Victoria F.</title>
+    <title>VERMUTEO – Victoria F.</title>
 
     <link rel="icon" href="../assets/logo/favicon-v2.png" type="image/png">
 
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/project.css" />
 
-    <meta name="description" content="Proyecto Vermuteo — Portfolio de Victoria Fornieles." />
+    <meta name="description" content="Proyecto Vermuteo – Portfolio de Victoria Fornieles." />
 </head>
 
 <body class="page page--project">
@@ -27,9 +27,7 @@
                     </span>
                 </a>
             </div>
-
         </div>
-
     </header>
 
     <main class="site-main" aria-label="Contenido principal">
@@ -37,30 +35,41 @@
 
             <div class="project-viewer" data-project="vermuteo">
 
-                <button class="project-nav project-nav--prev" type="button" aria-label="Foto anterior">
-                    <span class="project-nav__icon" aria-hidden="true">
-                        <img src="../assets/img/ui/arrows/arrow-left.svg" alt="">
-                    </span>
-                </button>
+                <!-- Título móvil: encima del carrusel, oculto en desktop -->
+                <h1 class="project-title project-title--mobile">06 /<br>VERMUTEO</h1>
 
-                <div class="project-stage">
-                    <h1 class="project-title">06 /<br>VERMUTEO</h1>
+                <!-- Fila: botón prev + stage + botón next -->
+                <div class="project-viewer__track">
 
-                    <figure class="project-figure">
-                        <div class="project-media" aria-hidden="true">
-                            <img class="project-img" src="../assets/img/projects/vermuteo/portada-vermuteo.jpg" alt=""
-                                decoding="async" fetchpriority="high" />
-                        </div>
-                    </figure>
+                    <button class="project-nav project-nav--prev" type="button" aria-label="Foto anterior">
+                        <span class="project-nav__icon" aria-hidden="true">
+                            <img src="../assets/img/ui/arrows/arrow-left.svg" alt="">
+                        </span>
+                    </button>
 
-                    <span class="project-category">DISEÑO DE LOGO</span>
+                    <div class="project-stage">
+                        <h1 class="project-title">06 /<br>VERMUTEO</h1>
+
+                        <figure class="project-figure">
+                            <div class="project-media" aria-hidden="true">
+                                <img class="project-img" src="../assets/img/projects/vermuteo/portada-vermuteo.jpg"
+                                    alt="" decoding="async" fetchpriority="high" />
+                            </div>
+                        </figure>
+
+                        <span class="project-category">DISEÑO DE LOGO</span>
+                    </div>
+
+                    <button class="project-nav project-nav--next" type="button" aria-label="Foto siguiente">
+                        <span class="project-nav__icon" aria-hidden="true">
+                            <img src="../assets/img/ui/arrows/arrow-right.svg" alt="">
+                        </span>
+                    </button>
+
                 </div>
 
-                <button class="project-nav project-nav--next" type="button" aria-label="Foto siguiente">
-                    <span class="project-nav__icon" aria-hidden="true">
-                        <img src="../assets/img/ui/arrows/arrow-right.svg" alt="">
-                    </span>
-                </button>
+                <!-- Category móvil: debajo del carrusel, oculta en desktop -->
+                <span class="project-category project-category--mobile"></span>
 
             </div>
         </section>
