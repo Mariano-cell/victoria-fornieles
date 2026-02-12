@@ -121,14 +121,23 @@
         ],
 
         "linea-22": [
+            { src: "../assets/img/projects/linea-22/01.png", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/02.png", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/03.png", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/04.png", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/05.jpg", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/06.jpg", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/linea-22/07.jpg", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/08.jpg", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/09.jpg", category: "BRANDING", caption: "", alt: "" },
+            { src: "../assets/img/projects/linea-22/10.jpg", category: "BRANDING", caption: "", alt: "" },
         ],
 
         vermuteo: [
-            { src: "../assets/img/projects/vermuteo/01.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/02.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/03.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
-            { src: "../assets/img/projects/vermuteo/04.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/01.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/02.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/03.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
+            { src: "../assets/img/projects/vermuteo/04.jpg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/05.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/06.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/07.jpeg", category: "DISEÑO DE LOGO", caption: "", alt: "" },

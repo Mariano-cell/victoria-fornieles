@@ -73,55 +73,10 @@
         </section>
     </main>
 
-    <script src="../js/loader.js"></script>
     <script src="../js/project-loader.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/project-gallery.js"></script>
 
-
-
-
-    <script>
-        (() => {
-            const t0 = performance.now();
-            const log = (label) => console.log(`[${Math.round(performance.now() - t0)}ms] ${label}`);
-
-            log("script corre");
-            document.addEventListener("DOMContentLoaded", () => log("DOMContentLoaded"));
-            window.addEventListener("load", () => log("window.load"));
-
-            // Clases del body
-            new MutationObserver(() => {
-                log(`body.class → "${document.body.className}"`);
-            }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
-            // Loader: aparece, recibe is-hidden, se elimina
-            const loaderObserver = new MutationObserver(() => {
-                const loader = document.querySelector(".page-loader");
-                if (!loader) return;
-                log("loader en DOM");
-                loaderObserver.disconnect();
-
-                new MutationObserver(() => {
-                    if (loader.classList.contains("is-hidden")) log("loader.is-hidden → fade-out empieza");
-                }).observe(loader, { attributes: true, attributeFilter: ["class"] });
-
-                new MutationObserver(() => {
-                    if (!document.querySelector(".page-loader")) log("✅ loader removido");
-                }).observe(document.body, { childList: true, subtree: true });
-            });
-            loaderObserver.observe(document.body, { childList: true, subtree: true });
-
-            // Links CSS que se cargan dinámicamente
-            new MutationObserver((mutations) => {
-                mutations.forEach(m => m.addedNodes.forEach(n => {
-                    if (n.tagName === "LINK") log(`<link> inyectado: ${n.href.split("/").pop()}`);
-                    if (n.tagName === "SCRIPT") log(`<script> inyectado: ${n.src.split("/").pop()}`);
-                }));
-            }).observe(document.head, { childList: true });
-
-        })();
-    </script>
 
 </body>
 
