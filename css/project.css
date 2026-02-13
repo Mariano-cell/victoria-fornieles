@@ -91,8 +91,9 @@
     width: fit-content;
     max-width: 100%;
     margin-inline: auto;
-    align-self: start;   /* ← evita que Safari estire en el eje cruzado */
-    min-width: 0; 
+    align-self: start;
+    /* ← evita que Safari estire en el eje cruzado */
+    min-width: 0;
 }
 
 .project-title {
@@ -171,26 +172,39 @@
 
 @media (max-width: 768px) {
 
-    /* Página ocupa el viewport menos el header */
-    .page--project .site-main {
-        /* height: calc(100vh - var(--header-h)); */
-        height: auto;
+    /* Body ocupa exactamente el viewport */
+    .page--project {
+        height: 100vh;
+        overflow: hidden;
         display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 90px;
-        padding-inline: 0;
+        flex-direction: column;
     }
 
+    /* Main ocupa el espacio restante tras el header, project se pega al fondo */
+    .page--project .site-main {
+        flex: 1;
+        min-height: 0;
+        height: calc(100vh - var(--header-h));
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
+        padding-top: 0;
+        padding-inline: 0;
+        padding-bottom: 70px;
+    }
+
+    /* Project al fondo; el espacio vacío queda arriba */
     .page--project .project {
         padding-top: 0;
+        padding-bottom: 24px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
         gap: 14px;
     }
+
 
     /* Ocultar title y category originales (viven dentro del stage/track) */
     .project-stage .project-title,
@@ -212,19 +226,29 @@
     }
 
     /* El viewer es columna: título / carrusel+botones / category */
+    /* .project-viewer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    } */
     .project-viewer {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 14px;
+        gap: 8px;
+
+        /* position: absolute; */
     }
 
     /* Fila interna: botón prev + stage + botón next */
     .project-viewer__track {
         width: 100%;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        /* era hidden: bloqueaba el gesto táctil en el stage */
     }
 
     /* El stage es el track horizontal deslizable */
@@ -262,7 +286,7 @@
     /* Contenedor de imagen ocupa todo el slide */
     .project-media {
         width: 100%;
-        height: 400px;
+        height: clamp(200px, 65vh, 500px);
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -279,12 +303,12 @@
         /* sin fade en mobile, el scroll es la transición */
     }
 
-    /* Botones: overlays invisibles sobre el stage, para tap izq/der */
+    /* Botones: cuadrados pequeños invisibles en esquinas inferiores del track */
     .project-nav {
         position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 50%;
+        bottom: 100px;
+        width: 200px;
+        height: 200px;
         padding: 0;
         margin: 0;
         background: transparent;
@@ -294,10 +318,8 @@
         z-index: 5;
         -webkit-appearance: none;
         appearance: none;
-        outline: none;
-
-        box-shadow: none;
-        border-radius: 0;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-touch-callout: none;
     }
 
     .project-nav--prev {
@@ -312,17 +334,7 @@
         display: none;
     }
 
-    /* iOS Safari: sin highlight gris al tap */
-    .project-nav,
-    .project-nav * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-touch-callout: none;
-    }
-
-    .project-nav:focus {
-        outline: none;
-    }
-
+    .project-nav:focus,
     .project-nav:focus:not(:focus-visible) {
         outline: none;
     }

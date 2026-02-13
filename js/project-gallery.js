@@ -161,7 +161,7 @@
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/04.webp", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/03.webp", category: "PARAISO", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/06.webp", category: "MAGNESIO 1864", caption: "", alt: "" },
-           
+
         ],
 
 
@@ -224,7 +224,7 @@
     // PRELOAD: carga imágenes cercanas
     // ==============================
     const preloadAround = (centerIndex) => {
-        for (let i = centerIndex - 2; i <= centerIndex + 5; i++) {
+        for (let i = centerIndex - 2; i <= centerIndex + 2; i++) {
             if (i < 0 || i >= slides.length) continue;
             const figure = stage.children[i];
             if (!figure) continue;
@@ -328,7 +328,27 @@
         preloadAround(0);
         updateUI();
 
-        // Actualizar index y UI al scrollear
+        // Swipe detection directo sobre el stage
+        let touchStartX = 0;
+        stage.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        stage.addEventListener("touchend", (e) => {
+            const delta = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(delta) > 40) {
+                if (delta > 0 && index < slides.length - 1) {
+                    index++;
+                } else if (delta < 0 && index > 0) {
+                    index--;
+                }
+                scrollToIndex(index);
+                preloadAround(index);
+                updateUI();
+            }
+        }, { passive: true });
+
+        // Actualizar index y UI al scrollear (scroll nativo o programático)
         stage.addEventListener("scroll", () => {
             const slideWidth = stage.offsetWidth;
             const newIndex = Math.round(stage.scrollLeft / slideWidth);
