@@ -94,7 +94,6 @@
             { src: "../assets/img/projects/analogicas/nuevo-formato/04.webp", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/nuevo-formato/05.webp", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/nuevo-formato/06.webp", category: "", caption: "", alt: "" },
-            { src: "../assets/img/projects/analogicas/nuevo-formato/07.webp", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/nuevo-formato/08.webp", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/nuevo-formato/09.webp", category: "", caption: "", alt: "" },
             { src: "../assets/img/projects/analogicas/nuevo-formato/10.webp", category: "", caption: "", alt: "" },
