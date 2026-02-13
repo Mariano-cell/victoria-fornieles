@@ -113,7 +113,7 @@ html {
 /* DESKTOP: desplazamiento Y pronunciado */
 @media (min-width: 769px) {
     .work-card.animate-in {
-        transform: translateY(-200px);
+        transform: translateY(-250px);
     }
 }
 
@@ -124,11 +124,11 @@ body.is-ready .work-card.animate-in {
 
 /* Delays en cascada */
 body.is-ready .work-card.animate-delay-1 {
-    animation-delay: 0ms;
+    animation-delay: 600ms;
 }
 
 body.is-ready .work-card.animate-delay-2 {
-    animation-delay: 150ms;
+    animation-delay: 50ms;
 }
 
 body.is-ready .work-card.animate-delay-3 {
