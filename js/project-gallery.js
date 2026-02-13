@@ -35,7 +35,6 @@
             { src: "../assets/img/projects/tomo/nuevo-formato/10.webp", category: "BRANDING", caption: "", alt: "" }
         ],
 
-
         diagonal: [
             { src: "../assets/img/projects/diagonal/nuevo-formato/01.webp", category: "BRANDING", caption: "", alt: "" },
             { src: "../assets/img/projects/diagonal/nuevo-formato/02.webp", category: "BRANDING", caption: "", alt: "" },
@@ -52,41 +51,40 @@
             { src: "../assets/img/projects/diagonal/nuevo-formato/13.webp", category: "BRANDING", caption: "", alt: "" }
         ],
 
-
         cora: [
-            { src: "../assets/img/projects/cora/nuevo-formato/01.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/31.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/32.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/15.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/28.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/30.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/20.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/16.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/08.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/25.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/21.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/14.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/26.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/27.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/17.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/22.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/23.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/09.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/10.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/11.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/12.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/02.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/03.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/04.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/05.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/06.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/07.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/08.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/09.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/10.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/11.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/12.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/13.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/14.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/15.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/16.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/17.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/18.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/19.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/20.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/21.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/22.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/23.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/24.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/25.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/26.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/27.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/28.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
             { src: "../assets/img/projects/cora/nuevo-formato/29.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/30.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/31.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/32.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
-            { src: "../assets/img/projects/cora/nuevo-formato/33.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" }
+            { src: "../assets/img/projects/cora/nuevo-formato/33.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/01.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
+            { src: "../assets/img/projects/cora/nuevo-formato/13.webp", category: "DISEÑO Y FOTOGRAFÍA", caption: "", alt: "" },
         ],
 
         analogicas: [
@@ -137,7 +135,6 @@
             { src: "../assets/img/projects/linea-22/nuevo-formato/11.webp", category: "BRANDING", caption: "", alt: "" }
         ],
 
-
         vermuteo: [
             { src: "../assets/img/projects/vermuteo/nuevo-formato/01.webp", category: "DISEÑO DE LOGO", caption: "", alt: "" },
             { src: "../assets/img/projects/vermuteo/nuevo-formato/02.webp", category: "DISEÑO DE LOGO", caption: "", alt: "" },
@@ -150,7 +147,6 @@
             { src: "../assets/img/projects/vermuteo/nuevo-formato/09.webp", category: "DISEÑO DE LOGO", caption: "", alt: "" }
         ],
 
-
         "artes-tapa": [
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/10.webp", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/07.webp", category: "DREIMONDS", caption: "", alt: "" },
@@ -161,9 +157,7 @@
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/04.webp", category: "MAGNESIO 1864", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/03.webp", category: "PARAISO", caption: "", alt: "" },
             { src: "../assets/img/projects/artes-de-tapa/nuevo-formato/06.webp", category: "MAGNESIO 1864", caption: "", alt: "" },
-
         ],
-
 
         escaneos: [
             { src: "../assets/img/projects/escaneos/nuevo-formato/01.webp", category: "", caption: "", alt: "" },
@@ -197,7 +191,6 @@
             { src: "../assets/img/projects/fotos/nuevo-formato/06.webp", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" },
             { src: "../assets/img/projects/fotos/nuevo-formato/07.webp", category: "FOTOS DIGITALES PROCESADAS EN PHOTOSHOP", caption: "", alt: "" }
         ],
-
     };
 
     // ==============================
@@ -292,6 +285,10 @@
 
     // ==============================
     // DESKTOP: fade entre fotos (un solo <img> en el DOM)
+    // Safari fix: al hacer swap, calculamos el ancho exacto que tendrá
+    // la imagen a altura fija y se lo asignamos al project-media.
+    // Así project-stage (width: fit-content) siempre tiene un ancho
+    // concreto para resolver, sin depender del layout de la imagen.
     // ==============================
     const renderDesktop = () => {
         const s = slides[index];
@@ -306,9 +303,20 @@
         const newImg = new Image();
         newImg.src = s.src;
 
+        const mediaEl = stage.querySelector(".project-media");
+
         const swap = () => {
             img.src = s.src;
             img.alt = s.alt || "";
+
+            // Safari fix: asignamos ancho explícito al project-media
+            // basado en el aspect ratio real de la imagen y la altura fija (520px)
+            if (mediaEl && newImg.naturalWidth && newImg.naturalHeight) {
+                const ratio = newImg.naturalWidth / newImg.naturalHeight;
+                const computedWidth = Math.round(520 * ratio);
+                mediaEl.style.width = computedWidth + "px";
+            }
+
             img.style.opacity = "1";
         };
 
@@ -370,8 +378,29 @@
 
     } else {
         // Desktop: usar el <img> que ya existe en el HTML
+        // y aplicar el fix de ancho en la primera imagen también
         const img = stage.querySelector(".project-img");
-        if (img) img.src = slides[0].src;
+        const mediaEl = stage.querySelector(".project-media");
+
+        if (img) {
+            const firstImg = new Image();
+            firstImg.src = slides[0].src;
+
+            const applyFirstWidth = () => {
+                img.src = slides[0].src;
+                if (mediaEl && firstImg.naturalWidth && firstImg.naturalHeight) {
+                    const ratio = firstImg.naturalWidth / firstImg.naturalHeight;
+                    mediaEl.style.width = Math.round(520 * ratio) + "px";
+                }
+            };
+
+            if (firstImg.complete) {
+                applyFirstWidth();
+            } else {
+                firstImg.onload = applyFirstWidth;
+            }
+        }
+
         preloadAround(0);
         updateUI();
     }
