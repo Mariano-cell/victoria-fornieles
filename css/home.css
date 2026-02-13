@@ -119,20 +119,20 @@ html {
 
 /* Animación */
 body.is-ready .work-card.animate-in {
-    animation: cardFadeIn 6000ms ease forwards;
+    animation: cardFadeIn 5000ms ease forwards;
 }
 
 /* Delays en cascada */
 body.is-ready .work-card.animate-delay-1 {
-    animation-delay: 600ms;
+    animation-delay: 800ms;
 }
 
 body.is-ready .work-card.animate-delay-2 {
-    animation-delay: 50ms;
+    animation-delay: 250ms;
 }
 
 body.is-ready .work-card.animate-delay-3 {
-    animation-delay: 300ms;
+    animation-delay: 470ms;
 }
 
 /* Keyframes: desktop tiene translateY, mobile solo opacity */
