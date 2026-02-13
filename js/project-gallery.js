@@ -224,7 +224,7 @@
     // PRELOAD: carga imágenes cercanas
     // ==============================
     const preloadAround = (centerIndex) => {
-        for (let i = centerIndex - 2; i <= centerIndex + 2; i++) {
+        for (let i = centerIndex - 2; i <= centerIndex + 5; i++) {
             if (i < 0 || i >= slides.length) continue;
             const figure = stage.children[i];
             if (!figure) continue;
