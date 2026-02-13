@@ -74,7 +74,7 @@ html {
     }
 
     to {
-        padding-top: 305px;
+        padding-top: 310px;
     }
 }
 
@@ -119,7 +119,7 @@ html {
 
 /* Animación */
 body.is-ready .work-card.animate-in {
-    animation: cardFadeIn 4000ms ease forwards;
+    animation: cardFadeIn 6000ms ease forwards;
 }
 
 /* Delays en cascada */

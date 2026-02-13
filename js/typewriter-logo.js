@@ -42,7 +42,8 @@
     // --- Timing ---
     const baseDelay = 60;        // velocidad por letra
     const lineBreakDelay = 200;  // pausa extra en <br>
-    const afterLoadDelay = 2200; // delay deseado después de load
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const afterLoadDelay = isMobile ? 800 : 2200; // mobile arranca antes // delay deseado después de load
 
     let i = 0;
 
