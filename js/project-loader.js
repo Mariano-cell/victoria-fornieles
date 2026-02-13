@@ -14,9 +14,9 @@
             if (!entry.isIntersecting) return;
             const stage = entry.target.closest('.project-stage');
             if (!stage) return;
-            stage.style.display = 'none';
+            stage.style.width = 'auto';
             stage.offsetHeight;
-            stage.style.display = '';
+            stage.style.width = '';
         });
     }, { threshold: 0.5 });
 
