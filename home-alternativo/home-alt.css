@@ -1,11 +1,6 @@
-/* ========================================
-   home-alt.css
-   Estilos EXCLUSIVOS de /home-alternativo/
-   Todos los selectores están bajo .page--home-alt
-   para no afectar ninguna otra página.
-   ======================================== */
 
-/* Header inner: de row space-between → column align-start */
+
+
 .page--home-alt .site-header__inner {
     flex-direction: column;
     align-items: flex-start;
@@ -14,7 +9,7 @@
     padding-top: 2rem;
 }
 
-/* El panel de email ahora abre hacia abajo desde la izquierda */
+
 .page--home-alt .header-email {
     right: auto;
     left: 0;
@@ -22,12 +17,11 @@
     padding-top: 0;
 }
 
-/* Label alineado a la izquierda */
+
 .page--home-alt .header-email__label {
     text-align: left;
 }
 
-/* Sin padding izquierdo en el toggle */
 .page--home-alt .contact-toggle {
     padding-left: 0;
 }
