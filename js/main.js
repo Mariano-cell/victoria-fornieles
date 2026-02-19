@@ -254,7 +254,7 @@
   let hidden = false;
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 30 && !hidden) {
+    if (window.scrollY > 10 && !hidden) {
       contact.classList.add("is-scrolled");
       hidden = true;
     } else if (window.scrollY <= 10 && hidden) {
