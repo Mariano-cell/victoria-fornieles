@@ -38,6 +38,14 @@ img {
   gap: 16px;
 }
 
+.site-header__inner {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding-top: 2rem;
+}
+
 .brand {
   text-decoration: none;
   color: inherit;
@@ -88,7 +96,7 @@ img {
 .contact-toggle {
   border: 0;
   background: transparent;
-  padding: 6px;
+  padding: 6px 6px 6px 0;
   cursor: pointer;
   color: inherit;
   line-height: 0;
@@ -161,6 +169,13 @@ body.is-ready .contact-toggle {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
+.header-email {
+  right: auto;
+  left: 0;
+  padding-left: 0;
+  padding-top: 0;
+}
+
 /* Estado abierto */
 .site-header__contact.is-open .header-email {
   transform: translateY(0);
@@ -171,8 +186,7 @@ body.is-ready .contact-toggle {
 .header-email__label {
   font-size: 1.2rem;
   line-height: 1.1;
-  opacity: 0.75;
-  text-align: right;
+  text-align: left;
   width: 100%;
 }
 

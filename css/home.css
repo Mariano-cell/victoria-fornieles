@@ -173,6 +173,13 @@ body.is-ready .work-card.animate-delay-3 {
 
     transition: letter-spacing 500ms ease;
 }
+@media (max-width: 768px) {
+    .work-card__title  {
+        font-size: 12px;
+    }
+}
+
+
 
 .work-card__link {
     display: block;
