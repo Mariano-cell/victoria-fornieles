@@ -254,10 +254,11 @@
   let hidden = false;
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 10 && !hidden) {
+    const threshold = window.matchMedia("(max-width: 768px)").matches ? 10 : 30;
+    if (window.scrollY > threshold && !hidden) {
       contact.classList.add("is-scrolled");
       hidden = true;
-    } else if (window.scrollY <= 10 && hidden) {
+    } else if (window.scrollY <= threshold && hidden) {
       contact.classList.remove("is-scrolled");
       hidden = false;
     }
