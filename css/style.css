@@ -38,6 +38,12 @@ img {
   gap: 16px;
 }
 
+@media(max-width: 768px){
+  .site-header__inner {
+    padding-inline: 12px;
+  }
+}
+
 .site-header__inner {
   flex-direction: column;
   align-items: flex-start;
@@ -96,7 +102,8 @@ img {
 .contact-toggle {
   border: 0;
   background: transparent;
-  padding: 6px 6px 6px 0;
+  padding: 0px 6px 6px 0px;
+  margin-left: -2px;
   cursor: pointer;
   color: inherit;
   line-height: 0;
@@ -231,6 +238,12 @@ body.is-ready .contact-toggle {
   padding-inline: var(--container-pad);
   padding-bottom: var(--container-pad);
   padding-top: 0;
+}
+
+@media (max-width: 768px){
+  .site-main {
+    padding-inline: 12px;
+  }
 }
 
 /* ========== COPY TOAST ========== */
