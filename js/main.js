@@ -243,3 +243,23 @@
     window.location.href = "../index.html";
   });
 })();
+
+// ==============================
+// OCULTAR CONTACT TOGGLE AL SCROLLEAR
+// ==============================
+(() => {
+  const contact = document.querySelector(".site-header__contact");
+  if (!contact) return;
+
+  let hidden = false;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 30 && !hidden) {
+      contact.classList.add("is-scrolled");
+      hidden = true;
+    } else if (window.scrollY <= 10 && hidden) {
+      contact.classList.remove("is-scrolled");
+      hidden = false;
+    }
+  }, { passive: true });
+})();

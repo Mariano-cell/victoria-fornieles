@@ -38,7 +38,7 @@ img {
   gap: 16px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
   .site-header__inner {
     padding-inline: 12px;
   }
@@ -152,6 +152,13 @@ body.is-ready .contact-toggle {
   transform: rotate(180deg);
 }
 
+/* Ocultar toggle al hacer scroll */
+.site-header__contact.is-scrolled {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
 /* Panel desplegable */
 .header-email {
   display: flex;
@@ -240,7 +247,7 @@ body.is-ready .contact-toggle {
   padding-top: 0;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .site-main {
     padding-inline: 12px;
   }
