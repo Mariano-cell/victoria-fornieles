@@ -160,6 +160,12 @@ body.is-ready .work-card.animate-delay-3 {
     gap: 10px;
 }
 
+@media (max-width: 768px) {
+    .work-card {
+        gap: 6px;
+    }
+}
+
 .work-card__title {
     margin: 0;
     font-size: var(--title-size);
@@ -175,7 +181,7 @@ body.is-ready .work-card.animate-delay-3 {
 }
 @media (max-width: 768px) {
     .work-card__title  {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
